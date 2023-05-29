@@ -676,7 +676,7 @@ function initialiseHowToPlayMovie(){
     
     const subtitles = [
       { start: 0, end: 7, text: "Klikom na zone istražuj i kreći se po prostoru." },
-      { start: 7, end: 11, text: "Za kretanje unatrag nađi zonu pri dnu stranice." },
+      { start: 7, end: 11, text: "Za kretanje unatrag nađi zonu pri dnu ekrana." },
       { start: 11, end: 16, text: "Simbol Wi-Fi na mobitelu će ti otkriti koje zone na ekranu se mogu kliknuti." },
       { start: 16, end: 21, text: "Na mobitelu prati priču." },
       { start: 21, end: 24, text: "Mobitel možeš spustiti i podići." },
