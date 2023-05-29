@@ -1,0 +1,45 @@
+TOTAL DO DEMO LIVE PREVIEWA (5:45)
+=================================
+
+možda kad se pali da odma opali pop-up: Full screen. (u tom slučaju maknuti ga s mobitela, tamo je ionako bezveze) (15 min)
+
+PUBLISH NA GIT HUB: https://babazu.github.io/iphigenia/ (30 min)
+
+LIVE PREVIEW JAVI mail svima (30 min)
+
+
+
+=================================
+
+favicon.ico 
+
+Snimanje pozicije u LS: baterija, lokacija, upiši u header kad je snimljeno
+        areaId je vjerojatno višak kad spremim, ako ne idem po tome, neće imat svrhu pa makni nek je manji json
+    
+Offline ikone:  https://fonts.googleapis.com/icon?family=Material+Icons
+
+function gameOver() = > YOU DIED SCREEN
+
+TRANSLATE: Jezik se bira na prvom screenu. Subtitleovi i meni nisu prevedeni.
+
+tokeni u chat, tako da replaceam npr: ostalo ti je još [battery] posto!!
+
+GLAZBA: FINVAL: https://tunetank.com/artist/finval/
+    GLAZBENI EFEKTI ZA WIN I LOSE
+
+SETTINGSI: Postavke signala u meniju ==> Jačina signala - to su možda settingsi (al što u njih?)
+  
+Trzanje kad se puno i prebrzo klika naprijed-nazad
+
+Testirati Firefox
+
+Razmisliti o skidanju modula da bi radilo kao vanilla jednostavnije
+Razmisliti o pakiranju u exe
+
+BIGGIE:
+    Mjuza
+    Prave fotke
+
+
+NICE TO HAVE:
+    animacija ide odmah a chat s delayem pa izostane napetost
