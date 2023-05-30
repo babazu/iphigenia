@@ -103,7 +103,9 @@ const rooms = {
             {areaId:1,desc:"natrag",top:"87%",left:"20%",width:"60%",height:"13%",cursor:"back",actions:[{action:"setRoom",room:"room_1_s3"}]}]}, 
     room_1_s5: { image:"1_s5.jpg", 
         areas:[
-            {areaId:1,desc:"natrag",top:"87%",left:"20%",width:"60%",height:"13%",cursor:"back",actions:[{action:"setRoom",room:"room_1_s1"}]}]},
+            {areaId:1,desc:"natrag",top:"87%",left:"20%",width:"60%",height:"13%",cursor:"back",actions:[{action:"setRoom",room:"room_1_s1"}]},
+            {areaId:2,requisite:"crusader",desc:"armida",top:"18%",left:"26%",width:"14%",height:"42%",cursor:"hand",actions:[{action:"setChat",chat:"chat_1_armida"}]},
+            {areaId:3,requisite:"crusader",desc:"križar",top:"16%",left:"64%",width:"14%",height:"63%",cursor:"hand",actions:[{action:"setChat",chat:"chat_1_11quest"}]}]},
     room_1_o1: { image:"1_o1.jpg", 
         areas:[
             {areaId:1,desc:"natrag",top:"87%",left:"20%",width:"60%",height:"13%",cursor:"back",actions:[{action:"setRoom",room:"room_1_01"}]},

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>IFIGENIJA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="./iphigenia.css">
+</head>
+<body>
+
+<div id="popupHowToPlay" class="popup">
+  <button id="popupHowToPlayXButton" class="popupXButton">&times;</button>
+  <h2>KΛKΘ IGRΛTI:</h2>
+  <div id="subtitles"></div>
+  <div id="howToVideoDiv">
+    <video id="howToVideo" width="640" height="480" >
+      <source src="graphic/help-movie.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<div id="popupAbout" class="popup">
+  <button id="popupAboutXButton" class="popupXButton">&times;</button>
+  <h2>Θ IGRI:</h2>
+  <div class="end-credits">
+    <div class="end-credits-content">
+      <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+      <p style="font-weight: bold; font-size: 60px;">IFIGΞNIJΛ</p>
+      <p>❧</p>
+      <p style="font-weight: bold; font-size: 30px;">IGRΛ NΛRΘDNΘG MUZΞJΛ ZΛDΛR</p>
+      <p>❧</p>
+      <img src="graphic/nmz-logo.svg" draggable="false">
+      <p>❧</p>
+      <p>Igra je kreirana za ...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget feugiat nulla.
+        <br>Sed tempus pellentesque lectus, eget consequat erat aliquam vitae. Suspendisse 
+      </p>      
+      <p>On felis ac eros hendrerit commodo. Suspendisse blandit tortor ipsum, dictum 
+        <br>varius dolor sodales in. Etiam ac sagittis metus, sed placerat orci. 
+      </p>
+      <p>❧</p>
+      <p>Sve prikazano u igri moguće je doživjeti i osobno, na adresi:
+        <br>II palače
+        <br>Trg Petra Zoranića 1
+        <br>23000 Zadar
+      </p>
+      <p>❧</p>
+      <img src="chat/0-02.jpg" draggable="false">
+      <p >❧</p>
+      <p style="font-weight: bold;">Dizajn:</p>
+      <p>Želimir Periš</p>
+      <p>Zlatko Bukač</p>
+      <p>Ivana Dražić</p>
+      <p>Koraljka Alavanja</p>
+      <p>❧</p>
+      <img src="chat/0-01.jpg" draggable="false">
+      <p>❧</p>
+      <p>Copyright fotografije i materijali (c) 2023. Narodni muzej Zadar</p>
+      <p>Copyright aplikacije i kod (c) 2023. Želimir Periš</p>
+      <p>❧</p>
+      <p>
+        Narodni muzej Zadar
+        <br>Poljana pape Aleksandra III b.b.
+        <br>23000 Zadar
+        <br>info@nmz.hr
+      </p>
+      <p>❧</p>
+      <p></p><p></p><p></p><p></p>
+    </div>
+  </div>
+</div>
+
+<div id="popupAreYouSure">
+  <div class="popupAreYouSureContent">
+    <h2>Želiš li ugasiti igru?</h2>
+    <div class="popupAreYouSureButtons">
+      <button id="popupAreYouSureYes">Da</button>
+      <button id="popupAreYouSureNo">Ne</button>
+    </div>
+  </div>
+</div>
+
+<div id="popupFullScreen">
+  <div class="popupFullScreenContent">
+    <h2>Preporuka je igrati igru preko cijelog zaslona. Uključiti cijeli zaslon?</h2>
+    <div class="popupFullScreenButtons">
+      <button id="popupFullScreenYes">Može</button>
+      <button id="popupFullScreenNo">Kasnije</button>
+    </div>
+  </div>
+</div>
+
+<div id="smallScreenOverlay" style="display: none;"><p id="smallScreenOverlayP"></p></div>
+
+<div id="homepage" draggable="false">
+  <div class="hp_caption">IFIGΞNIJΛ</div>
+  <div class="hp_subcaption">❧ IGRΛ NΛRΘDNΘG MUZΞJΛ ZΛDΛR ☙</div>
+  <div><div id="menuContinue" class="hp_menu_grey">⚍ NASTAVI IGRU</div></div>
+  <div><div id="menuNew" class="hp_menu">⚍ PΘKRΞNI NΘVU IGRU</div></div>
+  <div><div id="menuHow" class="hp_menu" >⚌ KAKO IGRATI?</div></div>
+  <div><div id="menuAbout" class="hp_menu">⚎ Θ IGRI</div></div>
+</div>
+
+<div id="canvas" draggable="false">
+
+  <div class="page-header">
+    <div class="page-header-left">&nbsp;</div>
+    <div class="page-header-right">
+      <button id="close-button" class="page-header-button"><i class="material-icons">close</i></button>
+    </div>
+  </div>
+    
+  <div class="phone">
+    <div class="chat">
+
+        <div class="header">
+          <div class="row">
+            <div id="phone-minimise-button">
+              <button>
+                <i id="icon-down" class="material-icons" aria-hidden="true">expand_more</i>
+                <i id="icon-up" class="material-icons" aria-hidden="true" style="display:none">expand_less</i>
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="phone-header">
+              <div id="phone-title" class="tooltip-trigger">eGina razgovor</div><div id="tooltipTitle" class="tooltip"></div>
+              <div id="phone-empty">&nbsp;</div>
+              <div id="phone-button-fullscreen" class="phone-button tooltip-trigger"><i class="material-icons">fullscreen</i></div> <div id="tooltipFullscreen" class="tooltip"></div>
+              <div id="phone-button-alarm" class="phone-icon tooltip-trigger"><i class="material-icons">alarm_on</i></div>        <div id="tooltipAlarm" class="tooltip"></div>
+              <div id="phone-button-wifi" class="phone-button tooltip-trigger"><i class="material-icons">wifi</i></div>             <div id="tooltipWifi" class="tooltip"></div>
+              <div id="phone-button-signal" class="phone-button tooltip-trigger"><i class="material-icons">signal_cellular_alt</i></div>  <div id="tooltipSignal" class="tooltip"></div>
+              <div id="phone-button-battery" class="phone-icon tooltip-trigger"><i class="material-icons">battery_full</i></div>  <div id="tooltipBattery" class="tooltip"></div>
+              <div id="phone-button-battery-value" class="phone-icon tooltip-trigger">00%</div>                                   <div id="tooltipBattery2" class="tooltip"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <ul id="messages"></ul>
+        <div id="choices"></div>
+        
+    </div>
+  </div>
+</div>
+
+<script src="./engine.js" type="module"></script>
+
+</body>
+</html>

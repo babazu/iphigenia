@@ -71,6 +71,7 @@ chat has attributes:
         - func: addition function to be executed with area is clicked
         - drainBattery: battery value is reduced. Mandatory parameter: amount (number).
         - setProgress: sets string in progress variable. progress variable hold keys verifiable with requisite proprety of area
+        - removeChoices: removes buttons
 
         example.
         {

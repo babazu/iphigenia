@@ -789,13 +789,18 @@ const chats = {
     chat_1_11win1: {"steps": [
         {
             "type": "eginaLine",
-            "line": "Odlično. No trebat ćemo još nešto. Pogledaj sliku s Armidom i reci mi je li s njom na slici Rinaldo ili Goffredo?",
+            "line": "Odlično. No trebat ćemo još nešto. Pogledaj sliku s Armidom i pronađi viteza koji stoji pred njom.",
             "delay": 1000
         },
         {
-            "type": "rollNext",
-            "next": "setChat",
-            "chat": "chat_1_11quest"
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "Ok",
+                    "setProgress": "crusader",
+                    "removeChoices": true
+                }
+            ],
         }
     ]},
     chat_1_11lose1: {"steps": [
@@ -822,7 +827,29 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "Ok, nema veze. Ali moraš mi nešto drugo provjeriti. Pogledaj sliku s Armidom i reci mi je li s njom na slici Rinaldo ili Goffredo?"
+            "line": "Ok, nema veze. Ali moraš mi nešto drugo provjeriti. Pogledaj sliku s Armidom i pronađi viteza koji stoji pred njom."
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "Ok",
+                    "setProgress": "crusader",
+                    "removeChoices": true
+                }
+            ],
+        }
+    ]},
+    chat_1_armida: {"steps": [
+        {
+            "type": "eginaLine",
+            "line": "To je Armida, princeza Damaska, čarobnica i zavodnica."
+        }
+    ]},
+    chat_1_11quest: {"steps": [
+        {
+            "type": "eginaLine",
+            "line": "Sad vrlo pažljivo pogledaj tog križara i reci mi je li on Rinaldo ili Goffredo?"
         },
         {
             "type": "playerLine",
@@ -831,15 +858,7 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "Sjeti se, jednog je očarala, a drugi je bio skeptičan i trezven pa se nije dao zavesti."
-        },
-        {
-            "type": "rollNext",
-            "next": "setChat",
-            "chat": "chat_1_11quest"
-        }
-    ]},
-    chat_1_11quest: {"steps": [
-        {
+        },{
             "type": "choice",
             "choices": [
                 {
@@ -868,7 +887,10 @@ const chats = {
         },{
             "type": "playerLine",
             "line": "Prvi od šest!"
-        },
+        },{
+            "type": "eginaLine",
+            "line": "*** KRAJ DEMO-a ***"
+        }
     ]},
     chat_1_11lose2: {"steps": [
         {
@@ -881,7 +903,10 @@ const chats = {
         },{
             "type": "playerLine",
             "line": "Prvi od šest!"
-        },
+        },{
+            "type": "eginaLine",
+            "line": "*** KRAJ DEMO-a ***"
+        }
     ]}
 };
 

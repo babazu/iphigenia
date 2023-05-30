@@ -1,7 +1,15 @@
-TOTAL DO DEMO LIVE PREVIEWA (5:45)
-=================================
+TOTAL DO DEMO LIVE PREVIEWA 
+============================
 
-možda kad se pali da odma opali pop-up: Full screen. (u tom slučaju maknuti ga s mobitela, tamo je ionako bezveze) (15 min)
+Klikni krizara prije njegovog pitanja. OK NE NESTANE
+
+opisati još detalja po muzeju kad se kliknu rukom nek se dobije opis
+
+
+
+Nadji bijelog leptira nakon toga, za punjenje baterije moze pitanje o broju leptira
+
+lijepši okvir za popup, barokni
 
 PUBLISH NA GIT HUB: https://babazu.github.io/iphigenia/ (30 min)
 

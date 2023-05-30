@@ -36,7 +36,7 @@ function startRoomAndPhone() {
     document.getElementById("homepage").style.display = "none";
     document.getElementById("canvas").style.display = "block";
 
-    setRoom("room_start");  /* ZA DEBUG OVDJE SETAJ POČETNU SOBU. 
+    setRoom("room_0_14");  /* ZA DEBUG OVDJE SETAJ POČETNU SOBU. 
                                 početak igre: room_start
                                 početak igre: room_0_01 
                                 ispred prve sobe:    room_0_14
@@ -46,7 +46,7 @@ function startRoomAndPhone() {
     // slow fade in and start phone after 1 sec
     canvasFadeIn();
     setTimeout(function() {
-      setChat(chats["chat_0_01"]); /* ZA DEBUG OVDJE SETAJ POČETNI CHAT. 
+      setChat(chats["chat_1_11win1"]); /* ZA DEBUG OVDJE SETAJ POČETNI CHAT. 
                                         početak igre: chat_0_01
                                         Armida: chat_1_10
                                     */
@@ -273,12 +273,14 @@ function addChoice(choice){
     let newBtn = document.createElement("button");
     newBtn.innerHTML = choice.text;
     newBtn.onclick = function() {
+        console.log('choice',choice);
         if (choice.text) { addSpokenLine("player", choice.text); }
         if (choice.setProgress) { progress.push(choice.setProgress); }
         if (choice.func) { eval(choice.func + "()"); }
         if (choice.drainBattery) { drainBattery(choice.drainBattery);}
         if (choice.next) { eval(choice.next + "(chats['" + choice.chat + "'])"); removeChoices(); } //next je očito UVIJEK SetChat, inače ću morati refaktorirati
-        if (choice.room) { eval ("setRoom('" + choice.room + "',false)")}
+        if (choice.room) { eval ("setRoom('" + choice.room + "',false)");}
+        if (choice.removeChoices) { removeChoices();}
       };
     newDiv.appendChild(newBtn);
     choices.appendChild(newDiv);

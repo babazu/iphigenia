@@ -59,15 +59,6 @@ body {
   overflow: hidden;
   transition: background-image 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
-
-.area {
-  cursor: crosshair;
-  position: absolute;
-  background-color: transparent;
-  /*background-color: rgba(255, 85, 241, 0.3); DEBUG: ODKOMENTIRAJ DA SE VIDE ZONE*/
-  border-radius: 20px;
-}
-
 .phone {
   z-index: 10000;
   transform: skewY(2deg) rotate(-3deg);
@@ -94,6 +85,13 @@ body {
   max-height: 720px;
   margin-top: 500px;
   bottom: -600px;
+}
+.area {
+  cursor: crosshair;
+  position: absolute;
+  background-color: transparent;
+  background-color: rgba(255, 85, 241, 0.3); /*DEBUG: ODKOMENTIRAJ DA SE VIDE ZONE*/
+  border-radius: 20px;
 }
 .phone :focus {
   outline: 0;
