@@ -12,7 +12,6 @@ room has attributes:
 
 area is entity that defines clickable space in room
 area has attributes:
-    - areaId: not used in code (will be obsolete)                                                                           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MOŽDA RIJEŠITI
     - requisite: name of flag that has to be set for this area to be rendered. e.g.: requisite:"butterfly"
     - desc: not used in code (for user's reference only, to easier handle json file)
     - top, left, width, height: position and size of area rectangle

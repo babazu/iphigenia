@@ -4,7 +4,7 @@ import { translations } from './translations.js';
 
 var mouseX = 0;
 var mouseY = 0;
-const minimalScreenSize = 200;
+const minimalScreenSize = 1200;
 var defaultDelay = 1000;
 var minimalDelayWithoutDots = 700;
 var lastChatTimeout;
@@ -343,7 +343,6 @@ function createAreas(areaDefinition){
         }
 
         const areaDiv = document.createElement("div");
-        areaDiv.id = `area${o.areaId}`;
         areaDiv.style.position = "absolute";
         areaDiv.style.top = o.top;
         areaDiv.style.left = o.left;
@@ -501,7 +500,7 @@ function setCursorToArea(area){
     var cursorSize = {
         "hand": "6vw",
         "up": "6vw",
-        "back": "6vw",
+        "back": "7vw",
         "left": "12vw",
         "right": "12vw",
         "disabled": "12vw"

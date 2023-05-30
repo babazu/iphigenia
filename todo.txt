@@ -1,19 +1,61 @@
 TOTAL DO DEMO LIVE PREVIEWA 
 ============================
 
-Klikni krizara prije njegovog pitanja. OK NE NESTANE
+room_1_k4
+tumačenje druge slike
 
-opisati još detalja po muzeju kad se kliknu rukom nek se dobije opis
+chat_1_s5_detail1: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Neki ljuid kleče."
+        },{
+            "type": "eginaLine",
+            "line": "Riječ je o kršćanskim ratovima. To su porobljeni muslimani"
+        }
+    ]},
+chat_1_s5_detail2: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Čudno su obučeni za to doba."
+        },{
+            "type": "eginaLine",
+            "line": "Obučeni su u modi vremena kad je slika nastala. Klasično za vrijeme prije televizije."
+        },{
+            "type": "playerLine",
+            "line": "Nisu imali televiziju, ha-ha! 😃"
+        },{
+            "type": "eginaLine",
+            "line": "Ni interneta."
+        },{
+            "type": "playerLine",
+            "line": "😱"
+        }
+    ]},
+chat_1_s5_detail3: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Janje."
+        },{
+            "type": "eginaLine",
+            "line": "Janje božje, često simbol Isusa Krista i kroz njega simbol pravednosti, dobrote i nesebičnosti."
+        }
+    ]},
+
+room_1_s5
+tumačenje prve slike
+
+
+
+
 
 
 
 Nadji bijelog leptira nakon toga, za punjenje baterije moze pitanje o broju leptira
 
-lijepši okvir za popup, barokni
 
-PUBLISH NA GIT HUB: https://babazu.github.io/iphigenia/ (30 min)
 
-LIVE PREVIEW JAVI mail svima (30 min)
+PUBLISH 
+LIVE PREVIEW JAVI link svima 
 
 
 

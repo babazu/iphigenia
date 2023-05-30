@@ -56,6 +56,16 @@ const chats = {
             ],
         }
     ]},
+    chat_0_01_BALK: {"steps": [
+        {
+            "type": "playerLine",
+            "line": "Neki balkon."
+        },
+        {
+            "type": "eginaLine",
+            "line": "S njega je providur Dalmacije nadgledao regiju svoje uprave."
+        }
+    ]},
     chat_0_02: {"steps": [
         {
             "type": "eginaLine",
@@ -113,6 +123,16 @@ const chats = {
             "line": "Okeeej."
         }
     ]},
+    chat_0_03_EKR: {"steps": [
+        {
+            "type": "playerLine",
+            "line": "Ekrani."
+        },
+        {
+            "type": "eginaLine",
+            "line": "To je dio promjenjivog postava. To nas sad ne zanima."
+        }
+    ]},
     chat_0_NO: {"steps": [
         {
             "type": "eginaLine",
@@ -158,7 +178,8 @@ const chats = {
                 {
                     "text": "Kako to točno radi?",
                     "next": "setChat",
-                    "chat": "chat_0_06_help"
+                    "chat": "chat_0_06_help",
+                    "removeChoices": true
                 }
             ],
         }
@@ -213,6 +234,24 @@ const chats = {
             "line": "Prvo izaberi dio mape muzeja u koji ideš."
         }
     ]},
+    chat_0_08_EKR: {"steps": [
+        {
+            "type": "playerLine",
+            "line": "Kneževa palača."
+        },
+        {
+            "type": "eginaLine",
+            "line": "Tamo idemo. Iz nje je zadarski knez upravljao gradom još od 13. stoljeća."
+        },
+        {
+            "type": "playerLine",
+            "line": "Preko sto godina. 😵"
+        },
+        {
+            "type": "eginaLine",
+            "line": "Zapravo preko sedamsto. 😇"
+        },
+    ]},
     chat_0_09: {"steps": [
         {
             "type": "eginaLine",
@@ -222,9 +261,10 @@ const chats = {
             "type": "choice",
             "choices": [
                 {
-                    "text": "Što tražim ovaj put?",
+                    "text": "Što nam je zadatak?",
                     "next": "setChat",
-                    "chat": "chat_0_11B"
+                    "chat": "chat_0_11B",
+                    "removeChoices": true
                 }
             ],
         }
@@ -233,6 +273,16 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "To nije put za šest salona."
+        }
+    ]},
+    chat_0_10_vrata: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Tu je neki prolaz."
+        },
+        {
+            "type": "eginaLine",
+            "line": "Ne idemo tamo. Vrati se i idi na kat."
         }
     ]},
     chat_0_11B: {"steps": [
@@ -321,6 +371,12 @@ const chats = {
                     "chat": "chat_1_02"
                 }
             ],
+        }
+    ]},
+    chat_1_salon2: {"unstopping":true,"steps": [
+        {
+            "type": "eginaLine",
+            "line": "To je drugi salon. Prvo moramo riješiti probleme iz ovog."
         }
     ]},
     chat_1_02: {"steps": [
@@ -444,6 +500,16 @@ const chats = {
             "chat": "chat_1_05"
         }
     ]},
+    chat_1_s4_detail: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Kao nekakva šiška."
+        },
+        {
+            "type": "eginaLine",
+            "line": "Motiv šiške nije uobičajen u baroknom namještaju. Cvjetovi, listovi, školjke, da; šiška ne baš. Zanimljivo."
+        }
+    ]},
     chat_1_05: {"steps": [
         {
             "type": "choice",
@@ -539,92 +605,71 @@ const chats = {
             "line": "Vidim ga."
         },{
             "type": "eginaLine",
-            "line": "To je divan mali rokoko leptirić."
+            "line": "To je divan mali rokoko leptirić. Ima ga svaki komad Luxardovog namještaja i to nekoliko komada."
         },{
             "type": "eginaLine",
-            "line": "Sad spusti mobitel i pažljivo pregledaj cijeli Luxardov komplet iz svih kutova pa mi reci koliko leptirića je na cijelom kompletu."
+            "line": "Međutim, čini se da u Luxardovom kompletu postoji i neka subverzija."
         },{
             "type": "eginaLine",
-            "line": "Pazi, da proviriš u sve kutove, a moguće da neke nećeš moći vidjeti."
+            "line": "Venecijanski majstor koji je radio ovaj komplet po narudžbi, podvalio je nešto, ne znam što. Pregledaj sve leptire i pronađi onog koji nije kao ostali.",
+            "delay": 2500
+        },{
+            "type": "playerLine",
+            "line": "U čemu je stvar?"
+        },{
+            "type": "eginaLine",
+            "line": "Namještaj je izrađen u venecijanskoj radionici negdje početkom 20. stoljeća. To je moderno doba, a Luxardo je htio stil star stotinu i pedeset godina.",
+            "delay": 2500
+        },{
+            "type": "playerLine",
+            "line": "Misliš da je majstor nešto sakrio?"
+        },{
+            "type": "eginaLine",
+            "line": "Još ne znam. Pronađi mi leptira koji nije kao drugi pa ću istražiti."
         },
-        {
-            "type": "rollNext",
-            "next": "setChat",
-            "chat": "chat_1_09_choice"
-        }
-    ]},
-    chat_1_09_choice: {"steps": [
         {
             "type": "choice",
             "choices": [
                 {
-                    "text": "19",
-                    "next": "setChat",
-                    "chat": "chat_1_09lose_b",
-                    "func": "animateLose",
-                    "drainBattery": 3
-                },{
-                    "text": "20",
-                    "next": "setChat",
-                    "chat": "chat_1_09lose",
-                    "func": "animateLose",
-                    "drainBattery": 3
-                },{
-                    "text": "21",
-                    "next": "setChat",
-                    "chat": "chat_1_09lose",
-                    "func": "animateLose",
-                    "drainBattery": 3
-                },{
-                    "text": "22",
-                    "next": "setChat",
-                    "chat": "chat_1_09win",
-                    "func": "animateWin"
-                },{
-                    "text": "23",
-                    "next": "setChat",
-                    "chat": "chat_1_09lose",
-                    "func": "animateLose",
-                    "drainBattery": 3
-                },{
-                    "text": "24",
-                    "next": "setChat",
-                    "chat": "chat_1_09lose_b",
-                    "func": "animateLose",
-                    "drainBattery": 3
+                    "text": "Ok, pronaći ću ga.",
+                    "setProgress": "bug_hunt",
+                    "removeChoices": true
                 }
             ],
         }
     ]},
-    chat_1_09lose: {"steps": [
+    chat_1_k2_leptir1: {"unstopping":true,"steps": [
         {
-            "type": "eginaLine",
-            "line": "Ne, ne, ne. Broj ponovo! Znaš brojati, nadam se.",
-            "delay": 2000
+            "type": "playerLine",
+            "line": "Crveni leptir."
         },
         {
-            "type": "rollNext",
-            "next": "setChat",
-            "chat": "chat_1_09_choice"
+            "type": "eginaLine",
+            "line": "Rokoko bio je lud za leptirima. Zvali su ih leteći cvjetovi. 🦋🦋🦋"
         }
     ]},
-    chat_1_09lose_b: {"steps": [
+    chat_1_k2_leptir2: {"unstopping":true,"steps": [
         {
-            "type": "eginaLine",
-            "line": "Nešto ne valja. Čini mi se da si krivo prebrojao. Prebroj ponovo.",
-            "delay": 2000
+            "type": "playerLine",
+            "line": "Plavi leptir."
         },
         {
-            "type": "rollNext",
-            "next": "setChat",
-            "chat": "chat_1_09_choice"
+            "type": "eginaLine",
+            "line": "Leptir je simbol transformacije. Od ružne gusjenice do prelijepog leptira. Ne znam koliko se Luxardo doživljavao u tome."
         }
     ]},
-    chat_1_09win: {"steps": [
+    chat_1_k2_leptir3: {"steps": [
+        {
+            "type": "playerLine",
+            "line": "Ovdje je neki čudni kukac. Čini mi se da to nije leptir."
+        },
         {
             "type": "eginaLine",
-            "line": "Odlično! Broj je točan, imam upute za nastavak.",
-            "delay": 2000
+            "line": "To tražimo!! Bravo! Vrsan si entomolog. 🐞🐜🕷🦗"
+        },
+        {
+            "type": "playerLine",
+            "line": "Ja sam superjunak Butterflyman! 🤸‍♂️"
         },
         {
             "type": "rollNext",
@@ -635,7 +680,7 @@ const chats = {
     chat_1_10: {"steps": [
         {
             "type": "eginaLine",
-            "line": "Ok, u sobi si trebao vidjeti dvije slike.",
+            "line": "Ok, krećemo na idući zadatak, Butterflyman. U sobi si trebao vidjeti dvije slike.",
             "delay": 2000
         },
         {
@@ -907,7 +952,142 @@ const chats = {
             "type": "eginaLine",
             "line": "*** KRAJ DEMO-a ***"
         }
-    ]}
+    ]},
+    chat_1_o9_detail: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Cvijeće."
+        },
+        {
+            "type": "eginaLine",
+            "line": "Cvijetni motivi su vrlo česti u rokokou. Koristili su ih kako bi stvorili romantičnu i raskošnu atmosferu."
+        }
+    ]},
+    chat_1_10_detail: {"steps": [
+        {
+            "type": "playerLine",
+            "line": "Puno cvijeća."
+        },
+        {
+            "type": "eginaLine",
+            "line": "Rokoko je pun cvijeća. Naći ćeš ga na svim mogućim tipovima namještaja, uvijek elegnatno i nježno."
+        }
+    ]},
+    chat_1_o6_detail: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Još jedan leptir."
+        },
+        {
+            "type": "eginaLine",
+            "line": "Leptir je hit motiv u rokoko stilu umjetnosti, uključujući namještaj."
+        }
+    ]},
+    chat_1_o3_leptir: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Bijeli leptir."
+        },{
+            "type": "eginaLine",
+            "line": "Čudno, rokoko voli boje i šareno. Pastelno, crveno, zlatno."
+        },{
+            "type": "eginaLine",
+            "line": "Bijeli leptir odudara, ali to nije ono što tražimo."
+        }
+    ]},
+    chat_1_ka2_leptir: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "I ovdje je leptir."
+        },{
+            "type": "eginaLine",
+            "line": "Nijedan stil nije stvorio ljupkije i elegantnije kreacije, smatrali su ljubitelji rokokoa."
+        },{
+            "type": "eginaLine",
+            "line": "A kritičari su riječ rokoko koristili pogrdno u značenju neozbiljan i pomodan."
+        },{
+            "type": "playerLine",
+            "line": "Leptiričast."
+        },{
+            "type": "eginaLine",
+            "line": "Točno to! 😝"
+        }
+    ]},
+    chat_1_k3_leptir: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Leptiri i cvijeće."
+        },{
+            "type": "eginaLine",
+            "line": "Luxardo je proizvodio maraschino, liker od višnji maraski. Očekivala bi vidjeti bar koju višnju na tom namještaju."
+        }
+    ]},
+    chat_1_ka4_detail1: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Neka djeca."
+        },{
+            "type": "eginaLine",
+            "line": "Možda anđeli? Klasičan motiv baroka. Veza čovjeka s Bogom Lete li?"
+        },{
+            "type": "playerLine",
+            "line": "Ne."
+        },{
+            "type": "eginaLine",
+            "line": "Onda su možda samo djeca."
+        }
+    ]},
+    chat_1_ka4_detail2: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Gole grudi."
+        },{
+            "type": "eginaLine",
+            "line": "Antička ljepota. Također simbol čednosti i nevinosti."
+        },{
+            "type": "playerLine",
+            "line": "I ženstvenosti?"
+        },{
+            "type": "eginaLine",
+            "line": "Naravno."
+        }
+    ]},
+    chat_1_ka4_detail3: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Janje."
+        },{
+            "type": "eginaLine",
+            "line": "Janje božje, često simbol Isusa Krista i kroz njega simbol pravednosti, dobrote i nesebičnosti."
+        }
+    ]},
+    chat_1_s5_detail1: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Neki ljudi kleče."
+        },{
+            "type": "eginaLine",
+            "line": "Riječ je o kršćanskim ratovima. To su porobljeni muslimani"
+        }
+    ]},
+    chat_1_s5_detail2: {"unstopping":true,"steps": [
+        {
+            "type": "playerLine",
+            "line": "Čudno su obučeni za križarske ratove."
+        },{
+            "type": "eginaLine",
+            "line": "Obučeni su u modi vremena kad je slika nastala. Klasičan problem slikarstva u vrijeme prije televizije."
+        },{
+            "type": "playerLine",
+            "line": "Nisu imali televiziju, ha-ha! 😃"
+        },{
+            "type": "eginaLine",
+            "line": "Ni internet."
+        },{
+            "type": "playerLine",
+            "line": "😱"
+        }
+    ]},
 };
 
 

@@ -378,7 +378,7 @@ body {
 #homepage {
   position: relative;
   cursor: crosshair;
-  background-image: url("fotos/00_meni.jpg");
+  background-image: url("graphic/00_menu.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -450,9 +450,9 @@ body {
   border: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 10010;
-  color: goldenrod;
+  color: #814e03;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-image: url('graphic/wallpaper-light2.jpg');
 }
 #subtitles{
   font-weight: bold;
@@ -504,7 +504,7 @@ body {
   }
 }
 #popupAreYouSure {
-  width:400px;
+  width:450px;
   max-height: 250px;
   overflow: hidden;
   display: none;
@@ -517,15 +517,14 @@ body {
   border: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 10010;
-  color: goldenrod;
+  color: #f9af65;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-image: url('graphic/wallpaper-light2.jpg');
 }
 .popupAreYouSureContent {
   background-color: #fefefe;
   padding: 20px;
   border: 1px solid #888;
-  max-width: 400px;
   text-align: center;
 }
 .popupAreYouSureButtons {
@@ -535,16 +534,16 @@ body {
   margin: 0 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #a1891c;
+  background-color: #f9af65;
   color: #fff;
   cursor: pointer;
 }
 .popupAreYouSureButtons button:hover {
-  background-color: #b4b226;
+  background-color: #fed7bd;
 }
 #popupFullScreen {
-  width:400px;
-  max-height: 250px;
+  width:740px;
+  max-height: 350px;
   overflow: hidden;
   display: none;
   position: fixed;
@@ -556,15 +555,15 @@ body {
   border: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 10010;
-  color: goldenrod;
+  color: #f9af65;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-image: url('graphic/wallpaper-light2.jpg');
 }
 .popupFullScreenContent {
   background-color: #fefefe;
   padding: 20px;
   border: 1px solid #888;
-  max-width: 400px;
   text-align: center;
 }
 .popupFullScreenButtons {
@@ -574,10 +573,10 @@ body {
   margin: 0 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #a1891c;
+  background-color: #f9af65;
   color: #fff;
   cursor: pointer;
 }
 .popupFullScreenButtons button:hover {
-  background-color: #b4b226;
+  background-color: #fed7bd;
 }
