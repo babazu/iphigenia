@@ -36,7 +36,7 @@ function startRoomAndPhone() {
     document.getElementById("homepage").style.display = "none";
     document.getElementById("canvas").style.display = "block";
 
-    setRoom("room_0_14");  /* ZA DEBUG OVDJE SETAJ POČETNU SOBU. 
+    setRoom("room_start");  /* ZA DEBUG OVDJE SETAJ POČETNU SOBU. 
                                 početak igre: room_start
                                 početak igre: room_0_01 
                                 ispred prve sobe:    room_0_14
@@ -46,7 +46,7 @@ function startRoomAndPhone() {
     // slow fade in and start phone after 1 sec
     canvasFadeIn();
     setTimeout(function() {
-      setChat(chats["chat_1_11win1"]); /* ZA DEBUG OVDJE SETAJ POČETNI CHAT. 
+      setChat(chats["chat_0_01"]); /* ZA DEBUG OVDJE SETAJ POČETNI CHAT. 
                                         početak igre: chat_0_01
                                         Armida: chat_1_10
                                     */

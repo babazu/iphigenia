@@ -90,7 +90,7 @@ body {
   cursor: crosshair;
   position: absolute;
   background-color: transparent;
-  background-color: rgba(255, 85, 241, 0.3); /*DEBUG: ODKOMENTIRAJ DA SE VIDE ZONE*/
+  /*background-color: rgba(255, 85, 241, 0.3); DEBUG: ODKOMENTIRAJ DA SE VIDE ZONE*/
   border-radius: 20px;
 }
 .phone :focus {
