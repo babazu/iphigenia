@@ -387,17 +387,17 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "Slušaj, situacija je stvarno ozbiljna. Izgubit ćemo puno vremena na tvoje pogreške, a time i baterije tvog mobitela.",
-            "delay": 600 
+            "delay": 1500 
         },
         {
             "type": "eginaLine",
             "line": "Nemam vremena učiti te povijest umjetnosti, pa ću ti dati kratke upute a ti se probaj snaći.",
-            "delay": 600 
+            "delay": 1500 
         },
         {
             "type": "eginaLine",
             "line": "Ako baš nisi siguran možeš pitati za pomoć ja ću u tom slučaju prosurfati pa ti dati preciznije upute, ali to će nas koštati baterije. Manje nego za pogreške, ali ipak...",
-            "delay": 700 
+            "delay": 1500 
         },
         {
             "type": "eginaLine",
@@ -421,7 +421,8 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "Bidermajer je dobroćudna, ograničena malograđanina. Skroman ali decentan. Vizualiziraj suzdržane bečke dame."
+            "line": "Bidermajer je dobroćudna, ograničena malograđanina. Skroman ali decentan. Vizualiziraj suzdržane bečke dame.",
+            "delay": 2000
         },
         {
             "type": "eginaLine",
@@ -550,7 +551,7 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "Probaj ponovo.",
-            "delay": 600 
+            "delay": 1500 
         },
         {
             "type": "rollNext",
@@ -665,7 +666,8 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "To tražimo!! Bravo! Vrsan si entomolog. 🐞🐜🕷🦗"
+            "line": "To tražimo!! 💚💚💚 Bravo! Vrsan si entomolog. 🐞🐜🕷🦗",
+            "delay": 2000
         },
         {
             "type": "playerLine",
@@ -934,7 +936,7 @@ const chats = {
             "line": "Prvi od šest!"
         },{
             "type": "eginaLine",
-            "line": "*** KRAJ DEMO-a ***"
+            "line": "🏴‍☠️🏴‍☠️🏴‍☠️ *** KRAJ DEMO-a *** 🏴‍☠️🏴‍☠️🏴‍☠️"
         }
     ]},
     chat_1_11lose2: {"steps": [
@@ -950,7 +952,7 @@ const chats = {
             "line": "Prvi od šest!"
         },{
             "type": "eginaLine",
-            "line": "*** KRAJ DEMO-a ***"
+            "line": "🏴‍☠️🏴‍☠️🏴‍☠️ *** KRAJ DEMO-a *** 🏴‍☠️🏴‍☠️🏴‍☠️"
         }
     ]},
     chat_1_o9_detail: {"unstopping":true,"steps": [
