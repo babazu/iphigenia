@@ -4,7 +4,7 @@ import { translations } from './translations.js';
 
 var mouseX = 0;
 var mouseY = 0;
-const minimalScreenSize = 1200;
+const minimalScreenSize = 200;
 var defaultDelay = 1000;
 var minimalDelayWithoutDots = 700;
 var lastChatTimeout;
