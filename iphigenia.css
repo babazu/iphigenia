@@ -560,3 +560,9 @@ body {
   width:500px;
   max-height: 350px;
 }
+.version{
+  color:#8ab4ac;
+  font-size: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
