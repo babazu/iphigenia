@@ -47,7 +47,6 @@ body {
 .material-icons {
   font-size: 22px;
 }
-
 #canvas {
   position: relative;
   cursor: crosshair;
@@ -225,7 +224,6 @@ body {
 .phone .chat #choices{
   padding-bottom: 15px;
 }
-
 #header {
   display: flex;
   flex-direction: column;
@@ -275,7 +273,6 @@ body {
   justify-content: space-between;
   width: 96%;
 }
-
 .tooltip {
   visibility: hidden;
   position: fixed;
@@ -290,11 +287,9 @@ body {
   white-space: nowrap;
   z-index: 1;
 }
-
 .tooltip-trigger:hover + .tooltip {
   visibility: visible;
 }
-
 @keyframes show-chat-even {
   0% {
     margin-left: -480px;
@@ -354,7 +349,6 @@ body {
     opacity: 0;
   }
 }
-
 #smallScreenOverlay {
   position: fixed;
   top: 0;
@@ -369,12 +363,10 @@ body {
   color: #ffffff;
   z-index: 10001;
 }
-
 #smallScreenOverlay p {
   text-align: center;
   margin-top: 250px;
 }
-
 #invalidRatioOverlay {
   position: fixed;
   top: 0;
@@ -389,14 +381,12 @@ body {
   color: #ffffff;
   z-index: 10001;
 }
-
 #invalidRatioOverlay p {
   text-align: center;
   margin-top: 250px;
   width: 75%;
   padding-left: 25%;
 }
-
 #homepage {
   position: relative;
   cursor: crosshair;
@@ -413,7 +403,7 @@ body {
   font-weight: bold;
   text-align: left;
   padding-left: calc(10vw);
-  padding-top: calc(10vw);
+  padding-top: calc(8vw);
   color: #FFFFFF;
   }
 .hp_subcaption {
@@ -422,7 +412,7 @@ body {
   font-weight: normal;
   text-align: left;
   padding-left: calc(10vw);
-  padding-bottom: calc(6vw);
+  padding-bottom: calc(4vw);
   color: #CCCCCC;
 }
 .hp_menu {
