@@ -29,7 +29,9 @@ function startHomepage(){
 
     setTranslations();
     setHomepageMenus();  
-    setTimeout(function() {startFullScreenPopup();}, 1000);
+    setTimeout(function() {startFullScreenPopup();}, 4000);
+    document.getElementById("close-button-homepage").addEventListener("click", closeHomepage);
+    document.getElementById("popupCloseGameOk").addEventListener("click", closePopupCloseGame);
 }
 
 function startRoomAndPhone() {
@@ -54,11 +56,11 @@ function startRoomAndPhone() {
     
     document.getElementById("phone-minimise-button").addEventListener("click", togglePhonePosition);
     document.getElementById("phone-button-wifi").addEventListener("click", flashAreas);
-    document.getElementById("close-button").addEventListener("click", closeGame);
+    document.getElementById("close-button-canvas").addEventListener("click", returnToHomepage);
     window.addEventListener("resize", setAreaCursors);
-    window.addEventListener("resize", checkFullSCreen);
+    //window.addEventListener("resize", checkFullSCreen);
     drawBattery();
-    setTimeout(function() {setFullscreenButton();},500);
+    //setTimeout(function() {setFullscreenButton();},500);
 }
 
 function setTranslations(){
@@ -69,24 +71,37 @@ function setTranslations(){
 
     document.getElementById("phone-title").textContent = selectedLanguage.phoneTitle;
     document.getElementById("tooltipTitle").textContent = selectedLanguage.tooltipPhoneTitle;
-    document.getElementById("tooltipFullscreen").textContent = selectedLanguage.tooltipFullscreen;
+    //document.getElementById("tooltipFullscreen").textContent = selectedLanguage.tooltipFullscreen;
     document.getElementById("tooltipAlarm").textContent = selectedLanguage.tooltipAlarm;
     document.getElementById("tooltipWifi").textContent = selectedLanguage.tooltipWifi;
     document.getElementById("tooltipSignal").textContent = selectedLanguage.tooltipSignal;
     document.getElementById("tooltipBattery").textContent = selectedLanguage.tooltipBattery + battery + "%";
     document.getElementById("tooltipBattery2").textContent = selectedLanguage.tooltipBattery + battery + "%";
     document.getElementById("smallScreenOverlayP").textContent = selectedLanguage.smallScreenCaption + minimalScreenSize + "px.";
+    document.getElementById("invalidRatioOverlayP").textContent = selectedLanguage.invalidRatioCaption;
 }
 
-function closeGame(){
+function returnToHomepage(){
     document.getElementById("popupAreYouSure").style.display = "block";
     document.getElementById("popupAreYouSureYes").addEventListener("click", proceedCloseGame);
     document.getElementById("popupAreYouSureNo").addEventListener("click", closeAreYouSure);
 }
 
+function closeHomepage(){
+    if (isFullScreen()){
+        exitFullscreen();
+    }
+    document.getElementById("popupCloseGame").style.display = "block";
+}
+
 function closeAreYouSure() {
     document.getElementById("popupAreYouSure").style.display = "none";
 }
+
+function closePopupCloseGame(){
+    document.getElementById("popupCloseGame").style.display = "none";
+}
+
 function proceedCloseGame() {
     closeAreYouSure();
     startHomepage();
@@ -117,20 +132,38 @@ function setFullScreen() {
     closeFullScreenPopup();
 }
 
-function isFullScreen() {
-    return !window.screenTop && !window.screenY;
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
 }
 
-  function checkFullSCreen(){
+function isFullScreen() {
+    //return !window.screenTop && !window.screenY;
+    return (
+        (document.fullscreenElement && document.fullscreenElement !== null) ||
+        document.mozFullScreen ||
+        document.webkitIsFullScreen ||
+        document.msFullscreenElement
+      );
+}
+
+/*function checkFullSCreen(){
     var fullscreenButton = document.getElementById("phone-button-fullscreen");
     if (isFullScreen()) {
         fullscreenButton.style.display = "none";
     } else {
         fullscreenButton.style.display = "block";
     }
-}
+}*/
 
-function setFullscreenButton(){
+/*function setFullscreenButton(){
     checkFullSCreen();
     var fullscreenButton = document.getElementById("phone-button-fullscreen");
     fullscreenButton.addEventListener("click", function() {
@@ -139,7 +172,7 @@ function setFullscreenButton(){
         }
         checkFullSCreen();
     });
-}
+}*/
 
 function gameOver(){
     console.log("TODO gameOver");
@@ -273,7 +306,6 @@ function addChoice(choice){
     let newBtn = document.createElement("button");
     newBtn.innerHTML = choice.text;
     newBtn.onclick = function() {
-        console.log('choice',choice);
         if (choice.text) { addSpokenLine("player", choice.text); }
         if (choice.setProgress) { progress.push(choice.setProgress); }
         if (choice.func) { eval(choice.func + "()"); }
@@ -544,7 +576,7 @@ function flashAreas() {
     const areas = document.getElementsByClassName("area");
     for (let i = 0; i < areas.length; i++) {
         areas[i].style.transition = "background-color 1s ease-out";
-        areas[i].style.backgroundColor = "rgba(255, 85, 241, 0.4)";//"rgba(255, 85, 241, 0.3)";//"rgba(255, 85, 241, 0.3)";
+        areas[i].style.backgroundColor = "rgba(255, 85, 241, 0.4)";
         setTimeout(function() {
             areas[i].style.transition = "background-color 4s ease-in";
             areas[i].style.backgroundColor = "transparent";
@@ -650,10 +682,39 @@ function drawBattery(){
 }
 
 function checkScreenSize(){
+    // Check minimal screen size
     if (window.innerWidth < minimalScreenSize) {
         document.getElementById("smallScreenOverlay").style.display = "block";
     }else{
         document.getElementById("smallScreenOverlay").style.display = "none";
+    }
+
+    // Check ratio
+    if (!checkIsRatioValid()) {
+        document.getElementById("invalidRatioOverlay").style.display = "block";
+        document.getElementById("popupFullScreenYes2").addEventListener("click", setFullScreen);
+    }else{
+        document.getElementById("invalidRatioOverlay").style.display = "none";
+    }
+}
+
+function checkIsRatioValid() {
+    // jesmo na canvasu ili homepage
+    let element = document.getElementById("canvas");
+    if (element.style.display == "none"){
+        element = document.getElementById("homepage");
+    }
+
+    const rect = element.getBoundingClientRect();
+    const visibleWidth = Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0);
+    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+    let visibleRatio = (visibleWidth/visibleHeight).toFixed(2);
+    let goodRatio = (1920/1080).toFixed(2);
+    if (visibleRatio/goodRatio > 1.03){
+        //odrezan je donji dio ekrana, pa se ne može igrati.
+        return false;
+    } else {
+        return true;
     }
 }
 

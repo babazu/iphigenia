@@ -116,30 +116,57 @@
   </div>
 </div>
 
-<div id="popupAreYouSure">
-  <div class="popupAreYouSureContent">
+<div id="popupAreYouSure" class="popup">
+  <div class="popupContent">
     <h2>Želiš li ugasiti igru?<br/>Napredak se snima automatski i moći ćeš nastaviti kasnije.</h2>
-    <div class="popupAreYouSureButtons">
+    <div class="popupButtons">
       <button id="popupAreYouSureYes">Da</button>
       <button id="popupAreYouSureNo">Ne</button>
     </div>
   </div>
 </div>
 
-<div id="popupFullScreen">
-  <div class="popupFullScreenContent">
-    <h2>Preporuka je igrati igru preko cijelog zaslona. Da bi svi elementi igre bili igrivi moraš vidjeti sva četiri zlatna floralna motiva u kutovima i ne vidjeti zidnu tapetu ispod.
-      <br/>Uključiti cijeli zaslon?</h2>
-    <div class="popupFullScreenButtons">
-      <button id="popupFullScreenYes">Uključi prikaz cijelog zaslona</button>
-      <button id="popupFullScreenNo">Sam ću prilagoditi prozor da vidim 4 kuta</button>
+<div id="popupFullScreen" class="popup">
+  <div class="popupContent" >
+    <h2>Preporuka je igrati igru preko cijelog zaslona.
+      <br/>Uključiti prikaz preko cijelog zaslona?</h2>
+    <div class="popupButtons">
+      <button id="popupFullScreenYes">Uključi</button>
+      <button id="popupFullScreenNo">Nastavi ovako</button>
     </div>
   </div>
 </div>
 
-<div id="smallScreenOverlay" style="display: none;"><p id="smallScreenOverlayP"></p></div>
+<div id="popupCloseGame" class="popup">
+  <div class="popupContent">
+    <h2>Igra je spremljena.
+      <br/>Možete ugasiti internet preglednik.</h2>
+      <div class="popupButtons">
+        <button id="popupCloseGameOk">Ok</button>
+      </div>
+  </div>
+</div>
+
+<div id="smallScreenOverlay" style="display: none;">
+  <p id="smallScreenOverlayP"></p>
+</div>
+
+<div id="invalidRatioOverlay" style="display: none;">
+  <p id="invalidRatioOverlayP"></p>
+  <div class="popupButtons butMiddle">
+    <button id="popupFullScreenYes2">Uključi prikaz preko cijelog zaslona</button>
+  </div>
+</div>
 
 <div id="homepage" draggable="false">
+
+  <div class="page-header">
+    <div class="page-header-left">&nbsp;</div>
+    <div class="page-header-right">
+      <button id="close-button-homepage" class="page-header-button"><i class="material-icons">close</i></button>
+    </div>
+  </div>
+
   <div class="hp_caption">IFIGΞNIJΛ</div>
   <div class="hp_subcaption">❧ IGRΛ NΛRΘDNΘG MUZΞJΛ ZΛDΛR ☙</div>
   <div><div id="menuContinue" class="hp_menu_grey">⚍ NASTAVI IGRU</div></div>
@@ -149,14 +176,14 @@
 </div>
 
 <div id="canvas" draggable="false">
-
+  
   <div class="page-header">
     <div class="page-header-left">&nbsp;</div>
     <div class="page-header-right">
-      <button id="close-button" class="page-header-button"><i class="material-icons">close</i></button>
+      <button id="close-button-canvas" class="page-header-button"><i class="material-icons">close</i></button>
     </div>
-  </div>
-    
+  </div> 
+
   <div class="phone">
     <div class="chat">
 
@@ -174,7 +201,7 @@
             <div class="phone-header">
               <div id="phone-title" class="tooltip-trigger">eGina razgovor</div><div id="tooltipTitle" class="tooltip"></div>
               <div id="phone-empty">&nbsp;</div>
-              <div id="phone-button-fullscreen" class="phone-button tooltip-trigger"><i class="material-icons">fullscreen</i></div> <div id="tooltipFullscreen" class="tooltip"></div>
+              <!--<div id="phone-button-fullscreen" class="phone-button tooltip-trigger"><i class="material-icons">fullscreen</i></div> <div id="tooltipFullscreen" class="tooltip"></div>-->
               <div id="phone-button-alarm" class="phone-icon tooltip-trigger"><i class="material-icons">alarm_on</i></div>        <div id="tooltipAlarm" class="tooltip"></div>
               <div id="phone-button-wifi" class="phone-button tooltip-trigger"><i class="material-icons">wifi</i></div>             <div id="tooltipWifi" class="tooltip"></div>
               <div id="phone-button-signal" class="phone-button tooltip-trigger"><i class="material-icons">signal_cellular_alt</i></div>  <div id="tooltipSignal" class="tooltip"></div>
