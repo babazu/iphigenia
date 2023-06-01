@@ -4,7 +4,7 @@ const chats = {
     chat_0_01: {"steps": [
         {
             "type": "eginaLine",
-            "line": "Pozdrav agente, ja sam eGina, vodit ću te kroz ovu operaciju. Meta je Narodni muzej Zadar. Javi se kad stigneš.",
+            "line": "Pozdrav agente, ja sam eGina, vodit ću te kroz ovu operaciju. Cilj je Narodni muzej Zadar. Javi se kad stigneš.",
             "delay": 1000
         },
         {

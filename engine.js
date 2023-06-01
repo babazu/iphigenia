@@ -4,6 +4,8 @@ import { translations } from './translations.js';
 
 var mouseX = 0;
 var mouseY = 0;
+let throttleTimer = null;
+let isThrottled = false;
 const minimalScreenSize = 1200;
 var defaultDelay = 1000;
 var minimalDelayWithoutDots = 700;
@@ -11,9 +13,9 @@ var lastChatTimeout;
 var battery = 99;
 var progress = ["start"];
 
-document.addEventListener("DOMContentLoaded", function() {
-    startHomepage();
-});
+document.addEventListener("DOMContentLoaded", startHomepage);
+
+document.addEventListener('keydown', keyPressed);
 
 document.addEventListener('mousemove', function(event) {
     mouseX = event.clientX;
@@ -21,6 +23,13 @@ document.addEventListener('mousemove', function(event) {
 });
 
 function startHomepage(){
+    //delete progress
+    clearTimeout(lastChatTimeout);
+    progress = ["start"];
+    removeChoices();
+    clearChatHistory();
+
+    // show homepage
     document.getElementById("homepage").style.display = "block";
     document.getElementById("canvas").style.display = "none";    
     
@@ -38,7 +47,7 @@ function startRoomAndPhone() {
     document.getElementById("homepage").style.display = "none";
     document.getElementById("canvas").style.display = "block";
 
-    setRoom("room_start");  /* ZA DEBUG OVDJE SETAJ POČETNU SOBU. 
+    setRoom("room_0_01");  /* ZA DEBUG OVDJE SETAJ POČETNU SOBU. 
                                 početak igre: room_start
                                 početak igre: room_0_01 
                                 ispred prve sobe:    room_0_14
@@ -48,7 +57,7 @@ function startRoomAndPhone() {
     // slow fade in and start phone after 1 sec
     canvasFadeIn();
     setTimeout(function() {
-      setChat(chats["chat_0_01"]); /* ZA DEBUG OVDJE SETAJ POČETNI CHAT. 
+      /*setChat(chats["chat_0_01"]);*/ /* ZA DEBUG OVDJE SETAJ POČETNI CHAT. 
                                         početak igre: chat_0_01
                                         Armida: chat_1_10
                                     */
@@ -58,9 +67,22 @@ function startRoomAndPhone() {
     document.getElementById("phone-button-wifi").addEventListener("click", flashAreas);
     document.getElementById("close-button-canvas").addEventListener("click", returnToHomepage);
     window.addEventListener("resize", setAreaCursors);
-    //window.addEventListener("resize", checkFullSCreen);
     drawBattery();
-    //setTimeout(function() {setFullscreenButton();},500);
+
+
+    //tool tip of toggle button
+    document.getElementById('phone-minimise-button').addEventListener('mouseenter', () => {
+        document.getElementById('tooltipTogglePhone').classList.add('visible');
+    });
+
+    document.getElementById('phone-minimise-button').addEventListener('mouseleave', () => {
+        document.getElementById('tooltipTogglePhone').classList.remove('visible');
+    });
+
+    //disable focusability of button
+    document.getElementById('phone-minimise-b').addEventListener('focus', () => {
+        document.getElementById('phone-minimise-b').blur();
+    });
 }
 
 function setTranslations(){
@@ -71,7 +93,7 @@ function setTranslations(){
 
     document.getElementById("phone-title").textContent = selectedLanguage.phoneTitle;
     document.getElementById("tooltipTitle").textContent = selectedLanguage.tooltipPhoneTitle;
-    //document.getElementById("tooltipFullscreen").textContent = selectedLanguage.tooltipFullscreen;
+    document.getElementById("tooltipTogglePhone").textContent = selectedLanguage.togglePhone;
     document.getElementById("tooltipAlarm").textContent = selectedLanguage.tooltipAlarm;
     document.getElementById("tooltipWifi").textContent = selectedLanguage.tooltipWifi;
     document.getElementById("tooltipSignal").textContent = selectedLanguage.tooltipSignal;
@@ -153,26 +175,6 @@ function isFullScreen() {
         document.msFullscreenElement
       );
 }
-
-/*function checkFullSCreen(){
-    var fullscreenButton = document.getElementById("phone-button-fullscreen");
-    if (isFullScreen()) {
-        fullscreenButton.style.display = "none";
-    } else {
-        fullscreenButton.style.display = "block";
-    }
-}*/
-
-/*function setFullscreenButton(){
-    checkFullSCreen();
-    var fullscreenButton = document.getElementById("phone-button-fullscreen");
-    fullscreenButton.addEventListener("click", function() {
-        if (!isFullScreen()) {
-            setFullScreen();
-        }
-        checkFullSCreen();
-    });
-}*/
 
 function gameOver(){
     console.log("TODO gameOver");
@@ -433,6 +435,52 @@ function createAreas(areaDefinition){
     });
 }
 
+function throttle(func, delay) {
+    if (!isThrottled) {
+      func();
+      isThrottled = true;
+  
+      throttleTimer = setTimeout(() => {
+        isThrottled = false;
+      }, delay);
+    }
+  }
+
+function keyPressed(event) {
+    throttle(() => {
+        switch (event.keyCode) {
+            case 32: // Spacebar
+                togglePhonePosition();
+                break;
+            case 37: // Left arrow
+                moveWithKey("left");
+                break;
+            case 38: // Up arrow
+                moveWithKey("up");
+                break;
+            case 39: // Right arrow
+                moveWithKey("right");
+                break;
+            case 40: // Down arrow
+                moveWithKey("back");
+                break;
+            default:
+                break;
+        }
+    }, 200);
+}
+
+function moveWithKey(icon){
+    // ako postoji area čija ikona odgovara zadanoj, izvršim klik na taj area.
+    const areas = document.getElementsByClassName("area");
+    for (let i = 0; i < areas.length; i++) {
+        if (areas[i].getAttribute('data-cursor') == icon){
+            areas[i].click();
+            break;
+        }
+    }
+}
+
 function promiseWriteLine(step) {
 
     animateDots(step);
@@ -642,24 +690,43 @@ function animateLose(){
 
 function drainBattery(amount){
     battery -= amount;
-    drawBattery();
+    if (battery < 0){
+        battery = 0;
+    }
+    
+    setBatteryValue();
+
+    const batteryIcon = document.getElementById("phone-button-battery");
+    batteryIcon.innerHTML = "<i class='material-icons'>battery_alert</i>";
+    batteryIcon.style.color = "red";
+    document.getElementById("phone-button-battery-value").style.color = "red";
+
+    setTimeout(() => {
+        batteryIcon.style.color = "white";
+        document.getElementById("phone-button-battery-value").style.color = "white";
+        drawBattery();
+    }, 3000);
+    
     if (battery < 1){
         gameOver();
     }
 }
 
-function drawBattery(){
-    
-    //set label
+function setBatteryValue(){
     const userLanguage = "hr"; //navigator.language || navigator.userLanguage;
     const selectedLanguage = translations[userLanguage] || translations.hr;
     const title = selectedLanguage.title;
     document.getElementById("tooltipBattery").textContent = selectedLanguage.tooltipBattery + battery + "%";
     document.getElementById("tooltipBattery2").textContent = selectedLanguage.tooltipBattery + battery + "%";
     document.getElementById("phone-button-battery-value").textContent = battery + "%";
+}
+
+function drawBattery(){
+    setBatteryValue();
 
     // set battery image
     const phoneButtonBattery = document.getElementById("phone-button-battery");
+    
     if (battery > 95){
         phoneButtonBattery.innerHTML = "<i class='material-icons'>battery_full</i>";
     } else if (battery > 85){
@@ -763,3 +830,10 @@ function initialiseHowToPlayMovie(){
       }
     });
 }
+
+
+
+
+
+
+    

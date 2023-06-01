@@ -1,14 +1,12 @@
 
-autohint sistem. kad ne nađe leptira nakon 20 klikova, egida daje hint
 
-animacija baterije kad gubi energiju
+autohint sistem. kad ne nađe leptira nakon 20 klikova, egida daje hint
 
 autohide mob kad se klikne area sa strelicom?
 
 
 u hodu se može zbrčkati buttoni i tekst, posebno na prvih par soba kad nisam uveo clearanej i slično
 
-favicon.ico 
 
 Snimanje pozicije u LS: baterija, lokacija, upiši u header kad je snimljeno
         areaId je vjerojatno višak kad spremim, ako ne idem po tome, neće imat svrhu pa makni nek je manji json
@@ -36,9 +34,14 @@ Razmisliti o skidanju modula da bi radilo kao vanilla jednostavnije
 Razmisliti o pakiranju u exe
 
 BIGGIE:
-    Mjuza
+    Mjuza:
+        3 songa
+        efekt za window
+        efekt za lose
+
     Prave fotke
 
+favicon.ico 
 
 NICE TO HAVE:
     animacija ide odmah a chat s delayem pa izostane napetost

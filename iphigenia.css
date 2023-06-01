@@ -290,6 +290,9 @@ body {
 .tooltip-trigger:hover + .tooltip {
   visibility: visible;
 }
+.tooltip.visible {
+  visibility: visible!important;
+}
 @keyframes show-chat-even {
   0% {
     margin-left: -480px;
@@ -427,6 +430,9 @@ body {
   padding-left: calc(10vw);
   margin-bottom: calc(1vw);
 }
+.hp_menu:hover {
+  color: #F7C952;
+}
 .hp_menu_grey {
   display: inline-block;
   width: auto;
@@ -468,6 +474,8 @@ body {
 }
 #subtitles{
   font-weight: bold;
+  width:100%;
+  text-align: center;
 }
 .popupXButton {
   position: absolute;
@@ -480,6 +488,7 @@ body {
 }
 #howToVideo{
   margin-top: -78px;
+  margin-bottom: -30px;
 }
 #howToVideoDiv{
   overflow: hidden;
@@ -554,5 +563,16 @@ body {
   color:#8ab4ac;
   font-size: 10px;
   padding-left: 10px;
-  padding-top: 5px;
+  padding-top: 45px;
+}
+.flash-animation {
+  animation: flash 1s ease-in-out 3;
+}
+@keyframes flash {
+  0%, 50%, 100% {
+      opacity: 1;
+  }
+  25%, 75% {
+      opacity: 0;
+  }
 }
