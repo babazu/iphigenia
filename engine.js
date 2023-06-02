@@ -4,7 +4,6 @@ import { translations } from './translations.js';
 
 var mouseX = 0;
 var mouseY = 0;
-let throttleTimer = null;
 let isThrottled = false;
 const minimalScreenSize = 1200;
 var defaultDelay = 1000;
@@ -43,8 +42,10 @@ function start(){
     
     var menuContinueDiv = document.getElementById('menuContinue');
     if (existSavedGame()) {
+        menuContinueDiv.classList.remove('hp_menu_disabled');
         menuContinueDiv.classList.add('hp_menu');
     } else {
+        menuContinueDiv.classList.remove('hp_menu');
         menuContinueDiv.classList.add('hp_menu_disabled');
     }
     setHomepageMenus();  
@@ -462,7 +463,7 @@ function throttle(func, delay) {
       func();
       isThrottled = true;
   
-      throttleTimer = setTimeout(() => {
+      setTimeout(() => {
         isThrottled = false;
       }, delay);
     }

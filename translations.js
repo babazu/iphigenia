@@ -10,7 +10,7 @@ const translations = {
       tooltipBattery: "Preostalo baterije: ",
       smallScreenCaption: "Igra Ifigenija se ne može igrati na ekranu užem od ",
       invalidRatioCaption: "Igra Ifigenija se ne može igrati ako nije prikazana cijela zona igrivosti. Upalite puni prikaz ekrana (F11) ili povećajte visinu internet preglednika.",
-      togglePhone: "Spušta/podiže mobitel [Razmaknica]",
+      togglePhone: "Spušta/podiže mobitel [razmaknica]",
     },
     en: {
       phoneTitle: "eGina talk",
@@ -21,6 +21,6 @@ const translations = {
       tooltipBattery: "Remaining battery: ",
       smallScreenCaption: "Iphigenia game cannot be played on less than ",
       invalidRatioCaption: "Iphigenia game cannot be played at this screen ratio. Start full-screen (F11) or enlarge browser height.",
-      togglePhone: "Toggle phone position [SpaceBar]",
+      togglePhone: "Toggle phone position [spacebar]",
     }
   };

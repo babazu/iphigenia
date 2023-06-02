@@ -1,13 +1,12 @@
 
-autohint sistem. kad ne nađe leptira nakon 20 klikova, egida daje hint
 
 
+AUTOHINT sistem. kad ne nađe leptira nakon 20 klikova, egida daje hint
 
-
-
-
-u hodu se može zbrčkati buttoni i tekst, posebno na prvih par soba kad nisam uveo clearanje i slično
+TEST: u hodu se može zbrčkati buttoni i tekst, posebno na prvih par soba kad nisam uveo clearanje i slično
     
+
+
 Offline ikone:  https://fonts.googleapis.com/icon?family=Material+Icons
 
 function gameOver() = > YOU DIED SCREEN
@@ -16,14 +15,15 @@ TRANSLATE: Jezik se bira na prvom screenu. Subtitleovi i meni nisu prevedeni.
 
 SETTINGSI: Postavke signala u meniju ==> Jačina signala - to su možda settingsi (al što u njih?)
   
-Trzanje kad se puno i prebrzo klika naprijed-nazad
-
 Testirati Firefox
 	RUŽAN SCROLL NA MOBU
 	font na mobu je očajan na mozzili.  
 
 Razmisliti o skidanju modula da bi radilo kao vanilla jednostavnije
 Razmisliti o pakiranju u exe
+
+favicon.ico bolji 
+
 
 BIGGIE:
     Mjuza:
@@ -35,7 +35,7 @@ BIGGIE:
 
     Prave fotke
 
-favicon.ico bolji 
+
 
 NICE TO HAVE:
     animacija ide odmah a chat s delayem pa izostane napetost
