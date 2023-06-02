@@ -92,4 +92,15 @@ chat has attributes:
             ],
         }
 
+        Tokens can be set inside text field.
+        [battery] - shows current battery level.
+
+=====================
+= KEYBOARD COMMANDS =
+=====================
+
+wasd and arrows : move user (based on icons on area)
+spacebar        : toggles phone position.
+.               : speed up dialogues in whole game (cannot be reverted, restart game)
+
 

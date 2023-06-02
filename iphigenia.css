@@ -433,7 +433,7 @@ body {
 .hp_menu:hover {
   color: #F7C952;
 }
-.hp_menu_grey {
+.hp_menu_disabled {
   display: inline-block;
   width: auto;
   text-shadow: 0 0 2px #CCCCCC, 0 5px 5px #000000;

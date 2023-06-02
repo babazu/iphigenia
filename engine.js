@@ -12,77 +12,96 @@ var minimalDelayWithoutDots = 700;
 var lastChatTimeout;
 var battery = 99;
 var progress = ["start"];
+/* DEBUG
+    početak igre: room_start
+    početak igre: room_0_01 
+    ispred prve sobe:    room_0_14
+    prva soba: room_1_01
+*/
+var currentRoom = "room_start";
+/* DEBUG
+    početak igre: chat_start
+    Armida: chat_1_10
+*/
+var currentChat = "chat_start";
 
-document.addEventListener("DOMContentLoaded", startHomepage);
+document.addEventListener("DOMContentLoaded", start);
 
-document.addEventListener('keydown', keyPressed);
+function start(){
+    // show homepage
+    document.getElementById("homepage").style.display = "block";
+    document.getElementById("canvas").style.display = "none"; 
 
-document.addEventListener('mousemove', function(event) {
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-});
+    // Registrira evente, izvršiti samo jednom
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    setTranslations();
+    document.getElementById("close-button-homepage").addEventListener("click", closeHomepage);
+    document.getElementById("popupCloseGameOk").addEventListener("click", closePopupCloseGame);
+    
+    var menuContinueDiv = document.getElementById('menuContinue');
+    if (existSavedGame()) {
+        menuContinueDiv.classList.add('hp_menu');
+    } else {
+        menuContinueDiv.classList.add('hp_menu_disabled');
+    }
+    setHomepageMenus();  
+
+    setTimeout(function() {startFullScreenPopup();}, 4000);
+
+    document.addEventListener('keydown', keyPressed);
+
+    document.addEventListener('mousemove', function(event) {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+    });
+}
 
 function startHomepage(){
     //delete progress
     clearTimeout(lastChatTimeout);
     progress = ["start"];
+    currentRoom = "room_start";
+    currentChat = "chat_start";
+    battery = 99;
     removeChoices();
     clearChatHistory();
 
     // show homepage
     document.getElementById("homepage").style.display = "block";
     document.getElementById("canvas").style.display = "none";    
-    
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    setTranslations();
-    setHomepageMenus();  
-    setTimeout(function() {startFullScreenPopup();}, 4000);
-    document.getElementById("close-button-homepage").addEventListener("click", closeHomepage);
-    document.getElementById("popupCloseGameOk").addEventListener("click", closePopupCloseGame);
 }
 
-function startRoomAndPhone() {
+function startRoomAndPhone(loadPosition) {
+    if(loadPosition){
+        loadGame();
+    }
+
     document.getElementById("homepage").style.display = "none";
     document.getElementById("canvas").style.display = "block";
-
-    setRoom("room_0_01");  /* ZA DEBUG OVDJE SETAJ POČETNU SOBU. 
-                                početak igre: room_start
-                                početak igre: room_0_01 
-                                ispred prve sobe:    room_0_14
-                                prva soba: room_1_01
-                            */
-    
-    // slow fade in and start phone after 1 sec
-    canvasFadeIn();
-    setTimeout(function() {
-      /*setChat(chats["chat_0_01"]);*/ /* ZA DEBUG OVDJE SETAJ POČETNI CHAT. 
-                                        početak igre: chat_0_01
-                                        Armida: chat_1_10
-                                    */
-    }, 2000);
-    
     document.getElementById("phone-minimise-button").addEventListener("click", togglePhonePosition);
     document.getElementById("phone-button-wifi").addEventListener("click", flashAreas);
     document.getElementById("close-button-canvas").addEventListener("click", returnToHomepage);
     window.addEventListener("resize", setAreaCursors);
-    drawBattery();
-
-
-    //tool tip of toggle button
     document.getElementById('phone-minimise-button').addEventListener('mouseenter', () => {
         document.getElementById('tooltipTogglePhone').classList.add('visible');
     });
-
     document.getElementById('phone-minimise-button').addEventListener('mouseleave', () => {
         document.getElementById('tooltipTogglePhone').classList.remove('visible');
     });
-
-    //disable focusability of button
     document.getElementById('phone-minimise-b').addEventListener('focus', () => {
         document.getElementById('phone-minimise-b').blur();
     });
+
+    // slow fade in and start phone after 1 sec
+    setRoom(currentRoom);
+    drawBattery();
+    canvasFadeIn();
+    setTimeout(function() {
+        setChat(currentChat, chats[currentChat]); 
+    }, 2000);
 }
 
 function setTranslations(){
@@ -210,7 +229,10 @@ function setHomepageMenus(){
 
     // event listeners
     document.getElementById("menuNew").addEventListener("click", function() {
-        startRoomAndPhone();
+        startRoomAndPhone(false);
+    });    
+    document.getElementById("menuContinue").addEventListener("click", function() {
+        startRoomAndPhone(true);
     });
     document.getElementById("menuHow").addEventListener("click", function() {
         document.getElementById("popupHowToPlay").style.display = "block";
@@ -269,7 +291,7 @@ function addSpokenLine(role, newLine, dots){
     removeDots(messages);
     var li = document.createElement("li");
     li.classList.add(role);
-    li.textContent = newLine;
+    li.textContent = newLine.replace(/\[battery\]/gi, battery.toString());
     if(dots){
         li.setAttribute('data-dots', true)
     }
@@ -312,7 +334,7 @@ function addChoice(choice){
         if (choice.setProgress) { progress.push(choice.setProgress); }
         if (choice.func) { eval(choice.func + "()"); }
         if (choice.drainBattery) { drainBattery(choice.drainBattery);}
-        if (choice.next) { eval(choice.next + "(chats['" + choice.chat + "'])"); removeChoices(); } //next je očito UVIJEK SetChat, inače ću morati refaktorirati
+        if (choice.next) { eval(choice.next + "('" + choice.chat + "', chats['" + choice.chat + "'])"); removeChoices(); } //next je očito UVIJEK SetChat, inače ću morati refaktorirati
         if (choice.room) { eval ("setRoom('" + choice.room + "',false)");}
         if (choice.removeChoices) { removeChoices();}
       };
@@ -401,13 +423,13 @@ function createAreas(areaDefinition){
                         break;
                     case "setChat":
                         areaDiv.addEventListener('click', function () {
-                            setChat(chats[a.chat], clearChoices);
+                            setChat(a.chat, chats[a.chat], clearChoices);
                         });
                         break;
                     case "setChatAndClearHistory":
                         areaDiv.addEventListener('click', function () {
                             clearChatHistory();
-                            setChat(chats[a.chat], clearChoices);
+                            setChat(a.chat, chats[a.chat], clearChoices);
                         });
                         break;
                     case "animateWin":
@@ -452,16 +474,23 @@ function keyPressed(event) {
             case 32: // Spacebar
                 togglePhonePosition();
                 break;
+            case 190: // Period (.)
+                defaultDelay = 0; //ubrza chat
+                break;    
             case 37: // Left arrow
+            case 65: // A key
                 moveWithKey("left");
                 break;
             case 38: // Up arrow
+            case 87: // W key
                 moveWithKey("up");
                 break;
             case 39: // Right arrow
+            case 68: // D key
                 moveWithKey("right");
                 break;
             case 40: // Down arrow
+            case 83: // S key
                 moveWithKey("back");
                 break;
             default:
@@ -486,6 +515,10 @@ function promiseWriteLine(step) {
     animateDots(step);
 
     let delay = step.delay ?? defaultDelay;
+    if (defaultDelay = 0){
+        // If user ever keypressed Period (.), no delay
+        delay = 0;
+    }
     return new Promise((resolve, reject) => {
         lastChatTimeout = setTimeout(() => {
             resolve(step);
@@ -523,15 +556,20 @@ function animateDots(step){
     }
 }
 
-function setChat(chat, clearChoices){
+function setChat(chatName, chat, clearChoices){
+    console.log('Starting chat:', chatName);
+
     if (clearChoices){
         removeChoices();
     }
 
+    currentChat = chatName;
+    saveGame();
+
     raisePhoneIfLowered();
 
     // Kill active chat. If chat is unstopping, that mean it doesnt kill active chat.
-    if (!chat.unstopping){
+    if (chat.unstopping == undefined || !chat.unstopping){
         clearTimeout(lastChatTimeout);
     }
     
@@ -633,8 +671,11 @@ function flashAreas() {
 }
 
 function setRoom(roomName, clearChoices){
-    console.log("Entering room: ",roomName);
+    console.log("Entering room: ", roomName);
     
+    currentRoom = roomName;
+    saveGame();
+
     if (clearChoices){
         removeChoices();
     }
@@ -831,9 +872,33 @@ function initialiseHowToPlayMovie(){
     });
 }
 
+function saveGame(){
+    var savedPosition = {
+        battery: battery,
+        progress: progress,
+        currentRoom: currentRoom,
+        currentChat: currentChat
+      };
+
+    var encodedValue = btoa(JSON.stringify(savedPosition));
+    localStorage.setItem("iphigenia_saved_game", encodedValue);
+}
+
+function loadGame(){
+    var savedPosition = localStorage.getItem("iphigenia_saved_game");
+    var decodedValue = JSON.parse(atob(savedPosition));
+
+    battery = decodedValue.battery;
+    progress = decodedValue.progress;
+    currentRoom = decodedValue.currentRoom;
+    currentChat = decodedValue.currentChat;
+}
+
+function existSavedGame(){
+    var savedPosition = localStorage.getItem("iphigenia_saved_game");
+    return !!savedPosition;
+}
 
 
 
-
-
-    
+     

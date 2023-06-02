@@ -1,26 +1,18 @@
 
-
 autohint sistem. kad ne nađe leptira nakon 20 klikova, egida daje hint
 
-autohide mob kad se klikne area sa strelicom?
 
 
-u hodu se može zbrčkati buttoni i tekst, posebno na prvih par soba kad nisam uveo clearanej i slično
 
 
-Snimanje pozicije u LS: baterija, lokacija, upiši u header kad je snimljeno
-        areaId je vjerojatno višak kad spremim, ako ne idem po tome, neće imat svrhu pa makni nek je manji json
+
+u hodu se može zbrčkati buttoni i tekst, posebno na prvih par soba kad nisam uveo clearanje i slično
     
 Offline ikone:  https://fonts.googleapis.com/icon?family=Material+Icons
 
 function gameOver() = > YOU DIED SCREEN
 
 TRANSLATE: Jezik se bira na prvom screenu. Subtitleovi i meni nisu prevedeni.
-
-tokeni u chat, tako da replaceam npr: ostalo ti je još [battery] posto!!
-
-GLAZBA: FINVAL: https://tunetank.com/artist/finval/
-    GLAZBENI EFEKTI ZA WIN I LOSE
 
 SETTINGSI: Postavke signala u meniju ==> Jačina signala - to su možda settingsi (al što u njih?)
   
@@ -38,13 +30,21 @@ BIGGIE:
         3 songa
         efekt za window
         efekt za lose
+        GLAZBA: FINVAL: https://tunetank.com/artist/finval/
+        GLAZBENI EFEKTI ZA WIN I LOSE
 
     Prave fotke
 
-favicon.ico 
+favicon.ico bolji 
 
 NICE TO HAVE:
     animacija ide odmah a chat s delayem pa izostane napetost
     da se scalea po širini ako je visina manja od minimalne (sad bude crn ekran i poruka da F11)
     WARNING: The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
         Mogao bih učitati salon po salon, a ne sve slike odjednom, reda radi
+
+
+
+
+
+

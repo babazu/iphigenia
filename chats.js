@@ -1,7 +1,7 @@
 export { chats };
 
 const chats = {
-    chat_0_01: {"steps": [
+    "chat_start": {"steps": [
         {
             "type": "eginaLine",
             "line": "Pozdrav agente, ja sam eGina, vodit ću te kroz ovu operaciju. Cilj je Narodni muzej Zadar. Javi se kad stigneš.",
@@ -53,10 +53,10 @@ const chats = {
                     "chat": "chat_0_02", 
                     "room": "room_0_01"
                 }
-            ],
+            ]
         }
     ]},
-    chat_0_01_BALK: {"steps": [
+    "chat_0_01_BALK": {"steps": [
         {
             "type": "playerLine",
             "line": "Neki balkon."
@@ -66,7 +66,7 @@ const chats = {
             "line": "S njega je providur Dalmacije nadgledao regiju svoje uprave."
         }
     ]},
-    chat_0_02: {"steps": [
+    "chat_0_02": {"steps": [
         {
             "type": "eginaLine",
             "line": "Napokon! Uđi u muzej.",
@@ -78,7 +78,7 @@ const chats = {
             "delay": 1500
         }
     ]},
-    chat_0_DP: {"unstopping":true,"steps": [
+    "chat_0_DP": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Neka zastava."
@@ -88,7 +88,7 @@ const chats = {
             "line": "Dvije palače. Spojena kneževa i providurova palača pretvoreni su u muzej. Na dobrom smo mjestu."
         }
     ]},
-    chat_0_ZB: {"unstopping":true,"steps": [
+    "chat_0_ZB": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Zadar baštini."
@@ -103,7 +103,7 @@ const chats = {
             "delay": 2500
         }
     ]},
-    chat_0_ZV: {"steps": [
+    "chat_0_ZV": {"steps": [
         {
             "type": "playerLine",
             "line": "Zatvoreno je."
@@ -113,7 +113,7 @@ const chats = {
             "line": "Prvo moraš znati gdje ideš. Desno je mapa muzeja."
         }
     ]},
-    chat_0_03: {"steps": [
+    "chat_0_03": {"steps": [
         {
             "type": "eginaLine",
             "line": "Ok sad budi pažljiv. Svaka pogreška nas košta vremena. Ako ne riješimo problem dok ti ne istekne baterija misija je propala."
@@ -123,7 +123,7 @@ const chats = {
             "line": "Okeeej."
         }
     ]},
-    chat_0_03_EKR: {"steps": [
+    "chat_0_03_EKR": {"steps": [
         {
             "type": "playerLine",
             "line": "Ekrani."
@@ -133,13 +133,13 @@ const chats = {
             "line": "To je dio promjenjivog postava. To nas sad ne zanima."
         }
     ]},
-    chat_0_NO: {"steps": [
+    "chat_0_NO": {"steps": [
         {
             "type": "eginaLine",
             "line": "Vrati se unutra. Nemamo vremena za šetnje po gradu."
         }
     ]},
-    chat_0_06: {"steps": [
+    "chat_0_06": {"steps": [
         {
             "type": "eginaLine",
             "line": "Ok, sad pažljivo. Moraš znati u koji dio muzeja idemo. Pazi, zbog svake pogreške će se potrošiti dio baterije."
@@ -181,10 +181,10 @@ const chats = {
                     "chat": "chat_0_06_help",
                     "removeChoices": true
                 }
-            ],
+            ]
         }
     ]},
-    chat_0_06_help: {"unstopping":true,"steps": [
+    "chat_0_06_help": {"unstopping":true,"steps": [
         {
             "type": "eginaLine",
             "line": "Na mobitelu imaš ikonu za Wi-Fi. Klikni je i označit će ti se moguća mjesta za klikanje. To će pomoći."
@@ -194,7 +194,7 @@ const chats = {
             "line": "Što se mape tiče, postoji pet zona. Ono što tražimo je u kneževoj palači, ne providurovoj."
         }
     ]},
-    chat_0_06_win: {"unstopping":true,"steps": [
+    "chat_0_06_win": {"unstopping":true,"steps": [
         {
             "type": "eginaLine",
             "line": "Bravo!! 💚💚💚💚💚💚"
@@ -204,37 +204,37 @@ const chats = {
             "line": "A sad idi tamo."
         }
     ]},
-    chat_0_06_lose: {"unstopping":true,"steps": [
+    "chat_0_06_lose": {"unstopping":true,"steps": [
         {
             "type": "eginaLine",
             "line": "O, neee! ☹️☹️☹️ Nije taj dio muzeja. Molim te razmisli malo, trošiš bateriju 🔋 Koliko mi se čini stalna postava je na prvom katu."
         }
     ]},
-    chat_0_06_lose2: {"unstopping":true,"steps": [
+    "chat_0_06_lose2": {"unstopping":true,"steps": [
         {
             "type": "eginaLine",
             "line": "Jao!! 👎👎👎 Nije to. Molim te pazi, trošiš bateriju 🔋. Čini mi se da je kat dobar, ali sobe krive."
         }
     ]},
-    chat_0_06_lose3: {"unstopping":true,"steps": [
+    "chat_0_06_lose3": {"unstopping":true,"steps": [
         {
             "type": "eginaLine",
-            "line": "Ne!! 😟😟😟 To je krivo. Pazi, pogreške troše bateriju 🔋. Stalna postava nije u providurovoj palači."
+            "line": "Ne!! 😟😟😟 To je krivo. Pazi, pogreške troše bateriju 🔋. Ostalo ti je još [battery]%! Stalna postava nije u providurovoj palači."
         }
     ]},    
-    chat_0_06_lose4: {"unstopping":true,"steps": [
+    "chat_0_06_lose4": {"unstopping":true,"steps": [
         {
             "type": "eginaLine",
-            "line": "Neeeee!! 👎👎👎 😟 Pazi, pogreške troše bateriju 🔋. Padne li baterija na 0% misija propada! 😟"
+            "line": "Neeeee!! 👎👎👎 😟 Pazi, pogreške troše bateriju 🔋 [battery]%!!! Padne li baterija na 0% misija propada! 😟"
         }
     ]},
-    chat_0_06_noback: {"steps": [
+    "chat_0_06_noback": {"steps": [
         {
             "type": "eginaLine",
             "line": "Prvo izaberi dio mape muzeja u koji ideš."
         }
     ]},
-    chat_0_08_EKR: {"steps": [
+    "chat_0_08_EKR": {"steps": [
         {
             "type": "playerLine",
             "line": "Kneževa palača."
@@ -250,9 +250,9 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "Zapravo preko sedamsto. 😇"
-        },
+        }
     ]},
-    chat_0_09: {"steps": [
+    "chat_0_09": {"steps": [
         {
             "type": "eginaLine",
             "line": "Ovo je dobar smjer. Nastavi stepenicama."
@@ -266,16 +266,16 @@ const chats = {
                     "chat": "chat_0_11B",
                     "removeChoices": true
                 }
-            ],
+            ]
         }
     ]},
-    chat_0_10: {"steps": [
+    "chat_0_10": {"steps": [
         {
             "type": "eginaLine",
             "line": "To nije put za šest salona."
         }
     ]},
-    chat_0_10_vrata: {"unstopping":true,"steps": [
+    "chat_0_10_vrata": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Tu je neki prolaz."
@@ -285,7 +285,7 @@ const chats = {
             "line": "Ne idemo tamo. Vrati se i idi na kat."
         }
     ]},
-    chat_0_11B: {"steps": [
+    "chat_0_11B": {"steps": [
         {
             "type": "eginaLine",
             "line": "Još ne znam. Ali znam da će biti gusto. Držim fige da zadaci ne budu teški 🤞"
@@ -298,7 +298,7 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_0_11C"
                 }
-            ],
+            ]
         },
         {
             "type": "choice",
@@ -308,28 +308,28 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_0_11D"
                 }
-            ],
+            ]
         }
     ]},
-    chat_0_11C: {"steps": [
+    "chat_0_11C": {"steps": [
         {
             "type": "eginaLine",
             "line": "Samo pazi na bateriju 🔋🔋🔋 Svaka greška skupo košta."
         }
     ]},
-    chat_0_11D: {"steps": [
+    "chat_0_11D": {"steps": [
         {
             "type": "eginaLine",
             "line": "🐵"
         }
     ]},
-    chat_0_14: {"steps": [
+    "chat_0_14": {"steps": [
         {
             "type": "eginaLine",
             "line": "To je to. Ok, agente, krenimo. Unutra nas čeka rješenje."
         }
     ]},
-    chat_1_01: {"steps": [
+    "chat_1_01": {"steps": [
         {
             "type": "playerLine",
             "line": "Ušao sam. Što tražimo?"
@@ -370,16 +370,16 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_1_02"
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_salon2: {"unstopping":true,"steps": [
+    "chat_1_salon2": {"unstopping":true,"steps": [
         {
             "type": "eginaLine",
             "line": "To je drugi salon. Prvo moramo riješiti probleme iz ovog."
         }
     ]},
-    chat_1_02: {"steps": [
+    "chat_1_02": {"steps": [
         {
             "type": "eginaLine",
             "line": "O, ne! 😱😱😱 Nemoj mi reći da ne raspoznaješ umjetnost."
@@ -411,10 +411,10 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_1_03"
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_03: {"steps": [
+    "chat_1_03": {"steps": [
         {
             "type": "eginaLine",
             "line": "Rokoko je kićast, preukrašen i lakomislen no ipak profinjen. Vizualiziraj vrckave francuske careve."
@@ -447,10 +447,10 @@ const chats = {
                     "func": "animateLose",
                     "drainBattery": 5
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_03lose: {"steps": [
+    "chat_1_03lose": {"steps": [
         {
             "type": "eginaLine",
             "line": "Ne 😪",
@@ -467,7 +467,7 @@ const chats = {
             "chat": "chat_1_04"
         }
     ]},
-    chat_1_03win: {"steps": [
+    "chat_1_03win": {"steps": [
         {
             "type": "eginaLine",
             "line": "Bravo!!! 🥳 Nisam sumnjala u tebe!",
@@ -479,7 +479,7 @@ const chats = {
             "chat": "chat_1_04"
         }
     ]},
-    chat_1_04: {"steps": [
+    "chat_1_04": {"steps": [
         {
             "type": "eginaLine",
             "line": "To je Luxardova neorokoko soba. Luxardo je veliki zadarski proizvođač maraskina. Dao je izraditi ovaj namještaj početkom 20st u stilu venecijanskog barocchetta.",
@@ -501,7 +501,7 @@ const chats = {
             "chat": "chat_1_05"
         }
     ]},
-    chat_1_s4_detail: {"unstopping":true,"steps": [
+    "chat_1_s4_detail": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Kao nekakva šiška."
@@ -511,7 +511,7 @@ const chats = {
             "line": "Motiv šiške nije uobičajen u baroknom namještaju. Cvjetovi, listovi, školjke, da; šiška ne baš. Zanimljivo."
         }
     ]},
-    chat_1_05: {"steps": [
+    "chat_1_05": {"steps": [
         {
             "type": "choice",
             "choices": [
@@ -539,10 +539,10 @@ const chats = {
                     "func": "animateLose",
                     "drainBattery": 5
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_06lose: {"steps": [
+    "chat_1_06lose": {"steps": [
         {
             "type": "eginaLine",
             "line": "Nope 😐🥵🔋",
@@ -559,7 +559,7 @@ const chats = {
             "chat": "chat_1_05"
         }
     ]},
-    chat_1_06win: {"steps": [
+    "chat_1_06win": {"steps": [
         {
             "type": "eginaLine",
             "line": "O-la-la!! 💚 Yes!!",
@@ -571,7 +571,7 @@ const chats = {
             "chat": "chat_1_07"
         }
     ]},
-    chat_1_07: {"steps": [
+    "chat_1_07": {"steps": [
         {
             "type": "eginaLine",
             "line": "Još imam neke zadatke vezane uz ovaj komplet. Nagledat ćeš se venecijanskih ormarića čini mi se.",
@@ -586,10 +586,10 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_1_08"
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_08: {"steps": [
+    "chat_1_08": {"steps": [
         {
             "type": "eginaLine",
             "line": "Nađi komodu. Onu ispod ogledala koje nije dio kompleta, to si dobro pogodio.",
@@ -600,7 +600,7 @@ const chats = {
             "delay": 2000
         }
     ]},
-    chat_1_08a: {"steps": [
+    "chat_1_08a": {"steps": [
         {
             "type": "playerLine",
             "line": "Vidim ga."
@@ -636,10 +636,10 @@ const chats = {
                     "setProgress": "bug_hunt",
                     "removeChoices": true
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_k2_leptir1: {"unstopping":true,"steps": [
+    "chat_1_k2_leptir1": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Crveni leptir."
@@ -649,7 +649,7 @@ const chats = {
             "line": "Rokoko bio je lud za leptirima. Zvali su ih leteći cvjetovi. 🦋🦋🦋"
         }
     ]},
-    chat_1_k2_leptir2: {"unstopping":true,"steps": [
+    "chat_1_k2_leptir2": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Plavi leptir."
@@ -659,7 +659,7 @@ const chats = {
             "line": "Leptir je simbol transformacije. Od ružne gusjenice do prelijepog leptira. Ne znam koliko se Luxardo doživljavao u tome."
         }
     ]},
-    chat_1_k2_leptir3: {"steps": [
+    "chat_1_k2_leptir3": {"steps": [
         {
             "type": "playerLine",
             "line": "Ovdje je neki čudni kukac. Čini mi se da to nije leptir."
@@ -679,7 +679,7 @@ const chats = {
             "chat": "chat_1_10"
         }
     ]},
-    chat_1_10: {"steps": [
+    "chat_1_10": {"steps": [
         {
             "type": "eginaLine",
             "line": "Ok, krećemo na idući zadatak, Butterflyman. U sobi si trebao vidjeti dvije slike.",
@@ -693,10 +693,10 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_1_11"
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_11: {"steps": [
+    "chat_1_11": {"steps": [
         {
             "type": "eginaLine",
             "line": "To su slike koje prikazuju različita pjevanja spjeva Torquata Tassa 'Oslobođeni Jeruzalem' iz 1575.",
@@ -739,10 +739,10 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_1_11b",
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_11a: {"steps": [
+    "chat_1_11a": {"steps": [
         {
             "type": "eginaLine",
             "line": "Jesi li siguran?",
@@ -760,10 +760,10 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_1_11b",
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_11b: {"steps": [
+    "chat_1_11b": {"steps": [
         {
             "type": "eginaLine",
             "line": "Budi pažljiv, ovo nam može iscrpiti puno baterije.",
@@ -796,10 +796,10 @@ const chats = {
                     "next": "setChat",
                     "chat": "chat_1_11c",
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_11c: {"steps": [
+    "chat_1_11c": {"steps": [
         {
             "type": "eginaLine",
             "line": "Nemam vremena kopati dublje po spjevu. Moraš odlučiti.",
@@ -830,10 +830,10 @@ const chats = {
                     "func": "animateLose",
                     "drainBattery": 7
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_11win1: {"steps": [
+    "chat_1_11win1": {"steps": [
         {
             "type": "eginaLine",
             "line": "Odlično. No trebat ćemo još nešto. Pogledaj sliku s Armidom i pronađi viteza koji stoji pred njom.",
@@ -847,10 +847,10 @@ const chats = {
                     "setProgress": "crusader",
                     "removeChoices": true
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_11lose1: {"steps": [
+    "chat_1_11lose1": {"steps": [
         {
             "type": "eginaLine",
             "line": "Ne, situacija mi ne odgovara. Kvragu 😰😰😰😰😰.",
@@ -884,16 +884,16 @@ const chats = {
                     "setProgress": "crusader",
                     "removeChoices": true
                 }
-            ],
+            ]
         }
     ]},
-    chat_1_armida: {"steps": [
+    "chat_1_armida": {"steps": [
         {
             "type": "eginaLine",
             "line": "To je Armida, princeza Damaska, čarobnica i zavodnica."
         }
     ]},
-    chat_1_11quest: {"steps": [
+    "chat_1_11quest": {"steps": [
         {
             "type": "eginaLine",
             "line": "Sad vrlo pažljivo pogledaj tog križara i reci mi je li on Rinaldo ili Goffredo?"
@@ -923,7 +923,7 @@ const chats = {
             ],
         }
     ]},
-    chat_1_11win2: {"steps": [
+    "chat_1_11win2": {"steps": [
         {
             "type": "eginaLine",
             "line": "Yes!!! 🏆🏆🏆🏆🏆 Bravo agente! Ušla sam u program za drugu sobu. Idemo dalje!",
@@ -939,10 +939,10 @@ const chats = {
             "line": "🏴‍☠️🏴‍☠️🏴‍☠️ *** KRAJ DEMO-a *** 🏴‍☠️🏴‍☠️🏴‍☠️"
         }
     ]},
-    chat_1_11lose2: {"steps": [
+    "chat_1_11lose2": {"steps": [
         {
             "type": "eginaLine",
-            "line": "Ne!! Jaoooo 🤕🤕🤕 Ok, izgubili smo malo baterije, ali sam ušla sam u program za drugu sobu. Idemo dalje!",
+            "line": "Ne!! Jaoooo 🤕🤕🤕 Ok, ostalo nam je još [battery]%. Bitno je da sam ušla sam u program za drugu sobu. Idemo dalje!",
             "delay": 1000
         },{
             "type": "eginaLine",
@@ -955,7 +955,7 @@ const chats = {
             "line": "🏴‍☠️🏴‍☠️🏴‍☠️ *** KRAJ DEMO-a *** 🏴‍☠️🏴‍☠️🏴‍☠️"
         }
     ]},
-    chat_1_o9_detail: {"unstopping":true,"steps": [
+    "chat_1_o9_detail": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Cvijeće."
@@ -965,7 +965,7 @@ const chats = {
             "line": "Cvijetni motivi su vrlo česti u rokokou. Koristili su ih kako bi stvorili romantičnu i raskošnu atmosferu."
         }
     ]},
-    chat_1_10_detail: {"steps": [
+    "chat_1_10_detail": {"steps": [
         {
             "type": "playerLine",
             "line": "Puno cvijeća."
@@ -975,7 +975,7 @@ const chats = {
             "line": "Rokoko je pun cvijeća. Naći ćeš ga na svim mogućim tipovima namještaja, uvijek elegnatno i nježno."
         }
     ]},
-    chat_1_o6_detail: {"unstopping":true,"steps": [
+    "chat_1_o6_detail": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Još jedan leptir."
@@ -985,7 +985,7 @@ const chats = {
             "line": "Leptir je hit motiv u rokoko stilu umjetnosti, uključujući namještaj."
         }
     ]},
-    chat_1_o3_leptir: {"unstopping":true,"steps": [
+    "chat_1_o3_leptir": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Bijeli leptir."
@@ -997,7 +997,7 @@ const chats = {
             "line": "Bijeli leptir odudara, ali to nije ono što tražimo."
         }
     ]},
-    chat_1_ka2_leptir: {"unstopping":true,"steps": [
+    "chat_1_ka2_leptir": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "I ovdje je leptir."
@@ -1015,7 +1015,7 @@ const chats = {
             "line": "Točno to! 😝"
         }
     ]},
-    chat_1_k3_leptir: {"unstopping":true,"steps": [
+    "chat_1_k3_leptir": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Leptiri i cvijeće."
@@ -1024,7 +1024,7 @@ const chats = {
             "line": "Luxardo je proizvodio maraschino, liker od višnji maraski. Očekivala bi vidjeti bar koju višnju na tom namještaju."
         }
     ]},
-    chat_1_ka4_detail1: {"unstopping":true,"steps": [
+    "chat_1_ka4_detail1": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Neka djeca."
@@ -1039,7 +1039,7 @@ const chats = {
             "line": "Onda su možda samo djeca."
         }
     ]},
-    chat_1_ka4_detail2: {"unstopping":true,"steps": [
+    "chat_1_ka4_detail2": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Gole grudi."
@@ -1054,7 +1054,7 @@ const chats = {
             "line": "Naravno."
         }
     ]},
-    chat_1_ka4_detail3: {"unstopping":true,"steps": [
+    "chat_1_ka4_detail3": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Janje."
@@ -1063,7 +1063,7 @@ const chats = {
             "line": "Janje božje, često simbol Isusa Krista i kroz njega simbol pravednosti, dobrote i nesebičnosti."
         }
     ]},
-    chat_1_s5_detail1: {"unstopping":true,"steps": [
+    "chat_1_s5_detail1": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Neki ljudi kleče."
@@ -1072,7 +1072,7 @@ const chats = {
             "line": "Riječ je o kršćanskim ratovima. To su porobljeni muslimani"
         }
     ]},
-    chat_1_s5_detail2: {"unstopping":true,"steps": [
+    "chat_1_s5_detail2": {"unstopping":true,"steps": [
         {
             "type": "playerLine",
             "line": "Čudno su obučeni za križarske ratove."
