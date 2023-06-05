@@ -99,7 +99,7 @@ chat has attributes:
 = KEYBOARD COMMANDS =
 =====================
 
-wasd and arrows : move user (based on icons on area)
+wasd / arrows   : move user (based on icons on area)
 spacebar        : toggles phone position.
 .               : speed up dialogues in whole game (cannot be reverted, restart game)
 

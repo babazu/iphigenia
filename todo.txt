@@ -1,10 +1,16 @@
+crko je delay na prvom cahtu
 
+
+da se mobitel sam nekad spusti. pronaći mjesta kad
 
 
 AUTOHINT sistem. kad ne nađe leptira nakon 20 klikova, egida daje hint
 
 TEST: u hodu se može zbrčkati buttoni i tekst, posebno na prvih par soba kad nisam uveo clearanje i slično
     
+kad se animira win lose na mobu, neka digne bootm da cijela animacija stane na screen
+
+
 
 
 Offline ikone:  https://fonts.googleapis.com/icon?family=Material+Icons

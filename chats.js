@@ -4,7 +4,7 @@ const chats = {
     "chat_start": {"steps": [
         {
             "type": "eginaLine",
-            "line": "Pozdrav agente, ja sam eGina, vodit ću te kroz ovu operaciju. Cilj je Narodni muzej Zadar. Javi se kad stigneš.",
+            "line": "Pozdrav agente, ja sam eGenija, vodit ću te kroz ovu operaciju. Cilj je Narodni muzej Zadar. Javi se kad stigneš.",
             "delay": 1000
         },
         {
@@ -26,11 +26,11 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "To je stara zgrada muzeja!"
+            "line": "To je stara zgrada!"
         },
         {
             "type": "eginaLine",
-            "line": "Muzej je sada u Dvije palače. Adresa je Trg Petra Zoranića 1, Zadar."
+            "line": "Postava muzeja je sada u Dvije palače. Adresa je Trg Petra Zoranića 1, Zadar."
         },
         {
             "type": "eginaLine",
@@ -501,7 +501,7 @@ const chats = {
             "chat": "chat_1_05"
         }
     ]},
-    "chat_1_s4_detail": {"unstopping":true,"steps": [
+    "chat_1_s4_detail": {"unstopping":true, "steps": [
         {
             "type": "playerLine",
             "line": "Kao nekakva šiška."
@@ -874,7 +874,7 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "Ok, nema veze. Ali moraš mi nešto drugo provjeriti. Pogledaj sliku s Armidom i pronađi viteza koji stoji pred njom."
+            "line": "Ok, nema veze. Ali moraš mi nešto drugo provjeriti. Pogledaj sliku s Armidom i klikni mi viteza koji stoji pred njom."
         },
         {
             "type": "choice",

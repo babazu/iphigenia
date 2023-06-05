@@ -2,7 +2,7 @@ export { translations };
 
 const translations = {
     hr: {
-      phoneTitle: "eGina razgovor",
+      phoneTitle: "eGenija razgovor",
       tooltipPhoneTitle: "Aktivna chat sugovornica",
       tooltipAlarm: "Igra je snimljena u: 00.00.2023. u 00:00",
       tooltipWifi: "Prikaz aktivnih zona",
@@ -13,7 +13,7 @@ const translations = {
       togglePhone: "Spušta/podiže mobitel [razmaknica]",
     },
     en: {
-      phoneTitle: "eGina talk",
+      phoneTitle: "eGenija talk",
       tooltipPhoneTitle: "Current chat interlocutor",
       tooltipAlarm: "Game saved at: 00-00-0000 at 00:00 PM",
       tooltipWifi: "Show hot zones",

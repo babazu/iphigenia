@@ -335,8 +335,8 @@ function addChoice(choice){
         if (choice.setProgress) { progress.push(choice.setProgress); }
         if (choice.func) { eval(choice.func + "()"); }
         if (choice.drainBattery) { drainBattery(choice.drainBattery);}
-        if (choice.next) { eval(choice.next + "('" + choice.chat + "', chats['" + choice.chat + "'])"); removeChoices(); } //next je očito UVIJEK SetChat, inače ću morati refaktorirati
-        if (choice.room) { eval ("setRoom('" + choice.room + "',false)");}
+        if (choice.next) { console.log('choice.next',choice.next,choice.chat); eval("setChat('" + choice.chat + "', chats['" + choice.chat + "'])"); removeChoices(); } //next je očito UVIJEK SetChat, inače ću morati refaktorirati
+        if (choice.room) { eval("setRoom('" + choice.room + "',false)");}
         if (choice.removeChoices) { removeChoices();}
       };
     newDiv.appendChild(newBtn);
@@ -373,7 +373,7 @@ function writeLine(step) {
 
         case "rollNext":
             // Execute funtion in 'next' field
-            eval(step.next + "(chats['" + step.chat + "'])"); 
+            eval("setChat('"+ step.chat +"',chats['" + step.chat + "'])"); 
             removeChoices(); //next je očito UVIJEK SetChat, inače ću morati refaktorirati
             break;
 
@@ -475,9 +475,9 @@ function keyPressed(event) {
             case 32: // Spacebar
                 togglePhonePosition();
                 break;
-            case 190: // Period (.)
-                defaultDelay = 0; //ubrza chat
-                break;    
+            //case 190: // Period (.)
+            //   defaultDelay = 0; //ubrza chat
+            //    break;    
             case 37: // Left arrow
             case 65: // A key
                 moveWithKey("left");
@@ -516,10 +516,10 @@ function promiseWriteLine(step) {
     animateDots(step);
 
     let delay = step.delay ?? defaultDelay;
-    if (defaultDelay = 0){
-        // If user ever keypressed Period (.), no delay
-        delay = 0;
-    }
+    //if (defaultDelay = 0){
+    //    // If user ever keypressed Period (.), no delay
+    //    delay = 0;
+    //}
     return new Promise((resolve, reject) => {
         lastChatTimeout = setTimeout(() => {
             resolve(step);
@@ -566,7 +566,6 @@ function setChat(chatName, chat, clearChoices){
 
     currentChat = chatName;
     saveGame();
-
     raisePhoneIfLowered();
 
     // Kill active chat. If chat is unstopping, that mean it doesnt kill active chat.
@@ -881,7 +880,7 @@ function saveGame(){
         currentChat: currentChat
       };
 
-    var encodedValue = btoa(JSON.stringify(savedPosition));
+    var encodedValue = JSON.stringify(savedPosition);
     localStorage.setItem("iphigenia_saved_game", encodedValue);
 }
 
