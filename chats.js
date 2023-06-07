@@ -433,11 +433,11 @@ const chats = {
                 {
                     "text": "Rokoko",
                     "chat": "chat_1_03win",
-                    "func": "animateWin",
+                    "func": "animationManager.animateWin",
                 },{
                     "text": "Bidermajer",
                     "chat": "chat_1_03lose",
-                    "func": "animateLose",
+                    "func": "animationManager.animateLose",
                     "drainBattery": 5
                 }
             ]
@@ -508,21 +508,21 @@ const chats = {
                 {
                     "text": "Krevet i noćni ormarići",
                     "chat": "chat_1_06lose",
-                    "func": "animateLose",
+                    "func": "animationManager.animateLose",
                     "drainBattery": 5
                 },{
                     "text": "Krevet, noćni ormarići i komoda",
                     "chat": "chat_1_06win",
-                    "func": "animateWin"
+                    "func": "animationManager.animateWin"
                 },{
                     "text": "Krevet, noćni ormarići, komoda i ogledalo",
                     "chat": "chat_1_06lose",
-                    "func": "animateLose",
+                    "func": "animationManager.animateLose",
                     "drainBattery": 5
                 },{
                     "text": "Krevet, noćni ormarići, komoda, ogledalo i konzolni stolić",
                     "chat": "chat_1_06lose",
-                    "func": "animateLose",
+                    "func": "animationManager.animateLose",
                     "drainBattery": 5
                 }
             ]
@@ -767,11 +767,11 @@ const chats = {
                 {
                     "text": "Armida je na slici s plemićima i robovima, siguran sam.",
                     "chat": "chat_1_11win1",
-                    "func": "animateWin"
+                    "func": "animationManager.animateWin"
                 },{
                     "text": "Armida je na slici s djecom i janjetom, siguran sam.",
                     "chat": "chat_1_11lose1",
-                    "func": "animateLose",
+                    "func": "animationManager.animateLose",
                     "drainBattery": 7
                 },{
                     "text": "Još uvijek ne znam, na obje slike je lijepa žena.",
@@ -802,11 +802,11 @@ const chats = {
                 {
                     "text": "Napol je skrita!! Armida je na slici s plemićima i robovima.",
                     "chat": "chat_1_11win1",
-                    "func": "animateWin"
+                    "func": "animationManager.animateWin"
                 },{
                     "text": "Prsa gola!! Armida je na slici s djecom i janjetom.",
                     "chat": "chat_1_11lose1",
-                    "func": "animateLose",
+                    "func": "animationManager.animateLose",
                     "drainBattery": 7
                 }
             ]
@@ -890,12 +890,12 @@ const chats = {
                 {
                     "text": "Rinaldo, onaj koji ju je pratio na otok sreće 💘",
                     "chat": "chat_1_11lose2",
-                    "func": "animateLose",
+                    "func": "animationManager.animateLose",
                     "drainBattery": 5
                 },{
                     "text": "Goffredo, onaj kojeg nije uspjela očarati 💔",
                     "chat": "chat_1_11win2",
-                    "func": "animateWin"
+                    "func": "animationManager.animateWin"
                 }
             ],
         }
