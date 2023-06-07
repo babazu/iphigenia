@@ -1,26 +1,35 @@
-crko je delay na prvom cahtu
 
 
-da se mobitel sam nekad spusti. pronaći mjesta kad
 
 
-AUTOHINT sistem. kad ne nađe leptira nakon 20 klikova, egida daje hint
-
-TEST: u hodu se može zbrčkati buttoni i tekst, posebno na prvih par soba kad nisam uveo clearanje i slično
+   
     
-kad se animira win lose na mobu, neka digne bootm da cijela animacija stane na screen
+    
+RELOAD ROOM: Kad se area otvore zbog progressa, ne otvore se useru, tj on bi morao ponovo izići ući u tu sobu. Možda se do može riješiti deklarativno, da changea sobu u tu istu. (ali može biti bilo gdje, ne valja. Reload room treba napraviti)
+
+AUDIO I UPUTE ZA ČOPORA:
+    GLAZBA
+        ubaci zvukove
+        ubaci mjuzu
+        na mobitel ikona: volume_up i volume_off (koju ikonu za promjeniti glazbu??, zapravo kad odgasuješ da mijenja glazbu)
+
+    Definiraj točno za Čopora što treba.
 
 
+BUG: Snimanje/učitavanje => pucaju atob i btoa nekad kasnije, non latin char, ali to nema smisla kad su sve normali
+    NISAM REPRODUCIRAO
 
+BUG: . za preskakanje dijaloga je imala neki issue pa je komentirana, ali možda radi
 
-Offline ikone:  https://fonts.googleapis.com/icon?family=Material+Icons
+preload po salonima, da nije sve odjednom, nego šestina po šestina
 
 function gameOver() = > YOU DIED SCREEN
 
 TRANSLATE: Jezik se bira na prvom screenu. Subtitleovi i meni nisu prevedeni.
+    chat po jeziku
 
 SETTINGSI: Postavke signala u meniju ==> Jačina signala - to su možda settingsi (al što u njih?)
-  
+
 Testirati Firefox
 	RUŽAN SCROLL NA MOBU
 	font na mobu je očajan na mozzili.  
@@ -30,16 +39,12 @@ Razmisliti o pakiranju u exe
 
 favicon.ico bolji 
 
+END GAME:
+    Možda pobjednik može dobiti jedinstvenu šifru
+    Možda TOP LISTA
 
-BIGGIE:
-    Mjuza:
-        3 songa
-        efekt za window
-        efekt za lose
-        GLAZBA: FINVAL: https://tunetank.com/artist/finval/
-        GLAZBENI EFEKTI ZA WIN I LOSE
 
-    Prave fotke
+
 
 
 
@@ -47,10 +52,18 @@ NICE TO HAVE:
     animacija ide odmah a chat s delayem pa izostane napetost
     da se scalea po širini ako je visina manja od minimalne (sad bude crn ekran i poruka da F11)
     WARNING: The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
-        Mogao bih učitati salon po salon, a ne sve slike odjednom, reda radi
+
+
+   
 
 
 
 
 
-
+ROK: 
+    1.7. prave fotke
+    1.7. sve sobe ugrubo
+    1.8  prava mjuz
+    1.8. sav tekst
+    1.9. sve, kontaktirati Mavenu
+    1.10. total predan projekt

@@ -89,7 +89,6 @@ body {
   cursor: crosshair;
   position: absolute;
   background-color: transparent;
-  /*background-color: rgba(255, 85, 241, 0.3); DEBUG: ODKOMENTIRAJ DA SE VIDE ZONE*/
   border-radius: 20px;
 }
 .phone :focus {
@@ -575,4 +574,26 @@ body {
   25%, 75% {
       opacity: 0;
   }
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(graphic/material-icons.woff2) format('woff2');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
