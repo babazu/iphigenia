@@ -22,7 +22,7 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "Neeee!!!!!! 🤬🤬🤬",
-            "delay": 5000
+            "delay": 4500
         },
         {
             "type": "eginaLine",
@@ -49,7 +49,6 @@ const chats = {
             "choices": [
                 {
                     "text": "Ok, mislim da sam stigao na pravo mjesto.",
-                    "next": "setChat",
                     "chat": "chat_0_02", 
                     "room": "room_0_01"
                 }
@@ -74,8 +73,12 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "Obrati pažnju na svaki detalj. Sve može biti korisno.",
+            "line": "Klikni sve što ti se učini zanimljivo. Obrati pažnju na svaki detalj. Sve može biti korisno.",
             "delay": 1500
+        },
+        {
+            "type": "lowerPhone",
+            "delay": 1000
         }
     ]},
     "chat_0_DP": {"unstopping":true,"steps": [
@@ -177,7 +180,6 @@ const chats = {
             "choices": [
                 {
                     "text": "Kako to točno radi?",
-                    "next": "setChat",
                     "chat": "chat_0_06_help",
                     "removeChoices": true
                 }
@@ -262,7 +264,6 @@ const chats = {
             "choices": [
                 {
                     "text": "Što nam je zadatak?",
-                    "next": "setChat",
                     "chat": "chat_0_11B",
                     "removeChoices": true
                 }
@@ -295,7 +296,6 @@ const chats = {
             "choices": [
                 {
                     "text": "Hvala.",
-                    "next": "setChat",
                     "chat": "chat_0_11C"
                 }
             ]
@@ -305,7 +305,6 @@ const chats = {
             "choices": [
                 {
                     "text": "Meni teški? Ha-ha! Rasturam muzeje. 😎",
-                    "next": "setChat",
                     "chat": "chat_0_11D"
                 }
             ]
@@ -359,15 +358,12 @@ const chats = {
             "choices": [
                 {
                     "text": "Roko-što?",
-                    "next": "setChat",
                     "chat": "chat_1_02"
                 },{
                     "text": "Bid? Maj?",
-                    "next": "setChat",
                     "chat": "chat_1_02"
                 },{
                     "text": "Nemam pojma. Može pomoć?",
-                    "next": "setChat",
                     "chat": "chat_1_02"
                 }
             ]
@@ -391,7 +387,7 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "Nemam vremena učiti te povijest umjetnosti, pa ću ti dati kratke upute a ti se probaj snaći.",
+            "line": "Nemam vremena učiti te povijest umjetnosti, pa ću ti dati kratke upute a ti se pokušaj snaći.",
             "delay": 1500 
         },
         {
@@ -408,7 +404,6 @@ const chats = {
             "choices": [
                 {
                     "text": "Spreman!",
-                    "next": "setChat",
                     "chat": "chat_1_03"
                 }
             ]
@@ -437,12 +432,10 @@ const chats = {
             "choices": [
                 {
                     "text": "Rokoko",
-                    "next": "setChat",
                     "chat": "chat_1_03win",
                     "func": "animateWin",
                 },{
                     "text": "Bidermajer",
-                    "next": "setChat",
                     "chat": "chat_1_03lose",
                     "func": "animateLose",
                     "drainBattery": 5
@@ -463,7 +456,6 @@ const chats = {
         },
         {
             "type": "rollNext",
-            "next": "setChat",
             "chat": "chat_1_04"
         }
     ]},
@@ -475,7 +467,6 @@ const chats = {
         },
         {
             "type": "rollNext",
-            "next": "setChat",
             "chat": "chat_1_04"
         }
     ]},
@@ -497,7 +488,6 @@ const chats = {
         },
         {
             "type": "rollNext",
-            "next": "setChat",
             "chat": "chat_1_05"
         }
     ]},
@@ -517,24 +507,20 @@ const chats = {
             "choices": [
                 {
                     "text": "Krevet i noćni ormarići",
-                    "next": "setChat",
                     "chat": "chat_1_06lose",
                     "func": "animateLose",
                     "drainBattery": 5
                 },{
                     "text": "Krevet, noćni ormarići i komoda",
-                    "next": "setChat",
                     "chat": "chat_1_06win",
                     "func": "animateWin"
                 },{
                     "text": "Krevet, noćni ormarići, komoda i ogledalo",
-                    "next": "setChat",
                     "chat": "chat_1_06lose",
                     "func": "animateLose",
                     "drainBattery": 5
                 },{
                     "text": "Krevet, noćni ormarići, komoda, ogledalo i konzolni stolić",
-                    "next": "setChat",
                     "chat": "chat_1_06lose",
                     "func": "animateLose",
                     "drainBattery": 5
@@ -550,12 +536,11 @@ const chats = {
         },
         {
             "type": "eginaLine",
-            "line": "Probaj ponovo.",
+            "line": "Pokušaj ponovo.",
             "delay": 1500 
         },
         {
             "type": "rollNext",
-            "next": "setChat",
             "chat": "chat_1_05"
         }
     ]},
@@ -567,7 +552,6 @@ const chats = {
         },
         {
             "type": "rollNext",
-            "next": "setChat",
             "chat": "chat_1_07"
         }
     ]},
@@ -583,7 +567,6 @@ const chats = {
                 {
                     "text": "Samo navali! Ja sam majstor za kićasto i preukrašeno.",
                     "setProgress": "butterfly",
-                    "next": "setChat",
                     "chat": "chat_1_08"
                 }
             ]
@@ -647,6 +630,10 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "Rokoko bio je lud za leptirima. Zvali su ih leteći cvjetovi. 🦋🦋🦋"
+        },
+        {
+            "type": "eginaLine",
+            "line": "No to nije ono što tražimo. Tražimo nešto što izgleda kao leptir, a zapravo je vilin konjic ili sličan kukac."
         }
     ]},
     "chat_1_k2_leptir2": {"unstopping":true,"steps": [
@@ -657,12 +644,16 @@ const chats = {
         {
             "type": "eginaLine",
             "line": "Leptir je simbol transformacije. Od ružne gusjenice do prelijepog leptira. Ne znam koliko se Luxardo doživljavao u tome."
+        },
+        {
+            "type": "eginaLine",
+            "line": "No to nije kukac kojeg što tražimo. Tražimo kukca koji samo sliči na leptira, ali nije lijep i u bojama."
         }
     ]},
     "chat_1_k2_leptir3": {"steps": [
         {
             "type": "playerLine",
-            "line": "Ovdje je neki čudni kukac. Čini mi se da to nije leptir."
+            "line": "Evo ga! Ovdje je neki čudni kukac. Čini mi se da to nije leptir."
         },
         {
             "type": "eginaLine",
@@ -675,7 +666,6 @@ const chats = {
         },
         {
             "type": "rollNext",
-            "next": "setChat",
             "chat": "chat_1_10"
         }
     ]},
@@ -690,7 +680,6 @@ const chats = {
             "choices": [
                 {
                     "text": "Jesam",
-                    "next": "setChat",
                     "chat": "chat_1_11"
                 }
             ]
@@ -728,15 +717,12 @@ const chats = {
             "choices": [
                 {
                     "text": "Armida je na slici s plemićima i robovima",
-                    "next": "setChat",
                     "chat": "chat_1_11a"
                 },{
                     "text": "Armida je na slici s djecom i janjetom",
-                    "next": "setChat",
                     "chat": "chat_1_11a"
                 },{
                     "text": "Nemam blagog pojma 🤔",
-                    "next": "setChat",
                     "chat": "chat_1_11b",
                 }
             ]
@@ -753,11 +739,9 @@ const chats = {
             "choices": [
                 {
                     "text": "Da 🤥",
-                    "next": "setChat",
                     "chat": "chat_1_11b",
                 },{
                     "text": "Ne 😬",
-                    "next": "setChat",
                     "chat": "chat_1_11b",
                 }
             ]
@@ -782,18 +766,15 @@ const chats = {
             "choices": [
                 {
                     "text": "Armida je na slici s plemićima i robovima, siguran sam.",
-                    "next": "setChat",
                     "chat": "chat_1_11win1",
                     "func": "animateWin"
                 },{
                     "text": "Armida je na slici s djecom i janjetom, siguran sam.",
-                    "next": "setChat",
                     "chat": "chat_1_11lose1",
                     "func": "animateLose",
                     "drainBattery": 7
                 },{
                     "text": "Još uvijek ne znam, na obje slike je lijepa žena.",
-                    "next": "setChat",
                     "chat": "chat_1_11c",
                 }
             ]
@@ -820,12 +801,10 @@ const chats = {
             "choices": [
                 {
                     "text": "Napol je skrita!! Armida je na slici s plemićima i robovima.",
-                    "next": "setChat",
                     "chat": "chat_1_11win1",
                     "func": "animateWin"
                 },{
                     "text": "Prsa gola!! Armida je na slici s djecom i janjetom.",
-                    "next": "setChat",
                     "chat": "chat_1_11lose1",
                     "func": "animateLose",
                     "drainBattery": 7
@@ -910,13 +889,11 @@ const chats = {
             "choices": [
                 {
                     "text": "Rinaldo, onaj koji ju je pratio na otok sreće 💘",
-                    "next": "setChat",
                     "chat": "chat_1_11lose2",
                     "func": "animateLose",
                     "drainBattery": 5
                 },{
                     "text": "Goffredo, onaj kojeg nije uspjela očarati 💔",
-                    "next": "setChat",
                     "chat": "chat_1_11win2",
                     "func": "animateWin"
                 }
@@ -1090,6 +1067,31 @@ const chats = {
             "line": "😱"
         }
     ]},
+    "chat_1_bug_hint": {"unstopping":true,"steps": [
+        {
+            "type": "eginaLine",
+            "line": "Vidim da ti ne ide traženje leptira. Treba li ti pomoć, gusjenice? 🐛"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "Nikad!",
+                    "chat": "chat_1_bug_hint2"
+                },
+                {
+                    "text": "Malo sam zapeo, priznajem.",
+                    "chat": "chat_1_bug_hint2"
+                }
+            ]
+        }
+    ]},
+    "chat_1_bug_hint2": {"unstopping":true,"steps": [
+        {
+            "type": "eginaLine",
+            "line": "Jesi li pogledao uznožje kreveta?"
+        }
+    ]}
 };
 
 
