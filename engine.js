@@ -263,7 +263,7 @@ var screenManager = {
             document.getElementById("smallScreenOverlayPP").innerText = "Current width: " + window.innerWidth + "px";
         }else{
             document.getElementById("smallScreenOverlay").style.display = "none";
-
+            document.getElementById("smallScreenOverlayPP").innerText = "";
         }
     
         // Check ratio
