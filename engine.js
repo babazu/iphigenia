@@ -1,13 +1,13 @@
 import { rooms } from './rooms.js';
-import { chats } from './chats.js';
 import { hints } from './hints.js';
 import { translations } from './translations.js';
 
 const minimalScreenSize = 1200;
-const idleBeforeLoweringPhoneInMs = 5001;
+const idleBeforeLoweringPhoneInMs = 12000;
 const defaultDelay = 1000;
 const minimalDelayWithoutDots = 700;
 
+let chats;
 let mouseX = 0;
 let mouseY = 0;
 let isThrottled = false;
@@ -19,6 +19,8 @@ let currentRoom = "room_start";
 let currentChat = "chat_start";
 let zoneAreaAlwaysVisible = false;
 var idleTimer;
+var audioStarted = false;
+
 
 /******************************* DEBUG STARTING VALUES SET HERE *********************************** */
 battery = 99;
@@ -47,14 +49,16 @@ zoneAreaAlwaysVisible = false; /* set to true to always see pink zones */
 document.addEventListener("DOMContentLoaded", init);
 
 function init(){
+    
+    // loads translations and chats
+    languageManager.setTranslations();
+    
     // show homepage
     document.getElementById("homepage").style.display = "block";
     document.getElementById("canvas").style.display = "none"; 
 
     screenManager.checkScreenSize();
     window.addEventListener("resize", screenManager.checkScreenSize);
-
-    translationManager.setTranslations();
     document.getElementById("close-button-homepage").addEventListener("click", homepageManager.closeHomepage);
     document.getElementById("popupCloseGameOk").addEventListener("click", popupManager.closePopupCloseGame);
     
@@ -82,6 +86,17 @@ function init(){
     phoneManager.resetTimer();
 
     setTimeout(function() {popupManager.startFullScreenPopup();}, 4000);
+
+    // autoplay je zabranjen pa palim na prvi klik
+    document.addEventListener("click", function(event) {
+        if (!audioStarted) {
+            audioStarted = true;
+            setTimeout(function() {
+              soundManager.startAudioPlayer();
+            }, 500);
+          }
+    });
+    
 }
 
 function startHomepage(){
@@ -97,6 +112,7 @@ function startHomepage(){
     // show homepage
     document.getElementById("homepage").style.display = "block";
     document.getElementById("canvas").style.display = "none";    
+ 
 }
 
 function startGame(loadPosition) {
@@ -108,7 +124,10 @@ function startGame(loadPosition) {
     document.getElementById("canvas").style.display = "block";
     document.getElementById("phone-minimise-button").addEventListener("click", phoneManager.togglePhonePosition);
     document.getElementById("phone-button-wifi").addEventListener("click", roomManager.flashAreas);
+    document.getElementById("phone-button-signal").addEventListener("click", phoneManager.signalClicked);
     document.getElementById("close-button-canvas").addEventListener("click", homepageManager.returnToHomepage);
+    document.getElementById("phone-button-sound").addEventListener("click", soundManager.toggleAudio);
+    document.getElementById("phone-button-sound-next").addEventListener("click", soundManager.playNextSong);
     window.addEventListener("resize", roomManager.setAreaCursors);
     document.getElementById('phone-minimise-button').addEventListener('mouseenter', () => {
         document.getElementById('tooltipTogglePhone').classList.add('visible');
@@ -127,38 +146,35 @@ function startGame(loadPosition) {
     setTimeout(function() {
         chatManager.setChat(currentChat); 
     }, 2000);
+
+    roomManager.preloadSaloon(0);
 }
 
 var homepageManager = {
     setHomepageMenus: function(){
         const cursorImg = document.createElement("img");
-        cursorImg.src = "graphic/arrow-menu.png";
+        cursorImg.src = "graphic/arrow-hand.png";
         cursorImg.style.position = "absolute";
         cursorImg.style.pointerEvents = "none";
-        cursorImg.style.display = 'none';
+        cursorImg.style.display = "none";
+        cursorImg.classList.add("hp_arrow");
     
         const menuElements = document.getElementsByClassName("hp_menu");
     
         for (let i = 0; i < menuElements.length; i++) {
             menuElements[i].appendChild(cursorImg);
-    
             menuElements[i].addEventListener("mousemove", (event) => {
-                cursorImg.style.left = `${event.clientX-cursorImg.width}px`;
-                cursorImg.style.top = `${event.clientY-(cursorImg.height/2)}px`;
+                cursorImg.style.left = `${event.clientX-cursorImg.width/4}px`;
+                cursorImg.style.top = `${event.clientY-(0*cursorImg.height)}px`;
             });
-    
             menuElements[i].addEventListener("mouseout", () => {
                 cursorImg.style.display = "none";
             });
-    
             menuElements[i].addEventListener("mouseover", () => {
                 cursorImg.style.display = "block";
             });
-    
             menuElements[i].style.cursor = "none";
         }
-    
-        // event listeners
         document.getElementById("menuNew").addEventListener("click", function() {
             startGame(false);
         });    
@@ -179,11 +195,17 @@ var homepageManager = {
         document.getElementById("popupAboutXButton").addEventListener("click", function() {
             document.getElementById("popupAbout").style.display = "none";
         });
+        document.getElementById("menuLanguageHr").addEventListener("click", function() {
+            languageManager.setLanguage("hr");
+        });
+        document.getElementById("menuLanguageEn").addEventListener("click", function() {
+            languageManager.setLanguage("en");
+        });
     },
     returnToHomepage: function(){
         document.getElementById("popupAreYouSure").style.display = "block";
         document.getElementById("popupAreYouSureYes").addEventListener("click", popupManager.proceedCloseGame);
-        document.getElementById("popupAreYouSureNo").addEventListener("click", popupManagercloseAreYouSure);
+        document.getElementById("popupAreYouSureNo").addEventListener("click", popupManager.closeAreYouSure);
     },
     closeHomepage: function(){
         if (screenManager.isFullScreen()){
@@ -194,29 +216,24 @@ var homepageManager = {
     initialiseHowToPlayMovie: function(){
         const subtitlesDiv = document.getElementById("subtitles");
         const video = document.getElementById("howToVideo");
-        
         const subtitles = [
-          { start: 0, end: 7, text: "Klikom na zone istražuj i kreći se po prostoru." },
-          { start: 7, end: 11, text: "Za kretanje unatrag nađi zonu pri dnu ekrana." },
-          { start: 11, end: 16, text: "Simbol Wi-Fi na mobitelu će ti otkriti koje zone na ekranu se mogu kliknuti." },
-          { start: 16, end: 21, text: "Na mobitelu prati priču." },
-          { start: 21, end: 24, text: "Mobitel možeš spustiti i podići." },
-          { start: 24, end: 28, text: "Neki dijalozi će od tebe očekivati odluku, tad na mobitelu izaberi jednu od ponuđenih opcija." },
-          { start: 28, end: 31, text: "Istraži ostale tajne koje igra skriva." },
-          { start: 31, end: 45, text: "Sretno!" },
+            { start: 0, end: 7, key: "howToPlay1" },
+            { start: 7, end: 11, key: "howToPlay2" },
+            { start: 11, end: 16, key: "howToPlay3" },
+            { start: 16, end: 21, key: "howToPlay4" },
+            { start: 21, end: 24, key: "howToPlay5" },
+            { start: 24, end: 28, key: "howToPlay6" },
+            { start: 28, end: 31, key: "howToPlay7" },
+            { start: 31, end: 45, key: "howToPlay8" },
         ];
-        
         video.play();
-    
         video.addEventListener("timeupdate", function() {
           const currentTime = video.currentTime;
-          
-          // Find the appropriate subtitle based on the current time
           const currentSubtitle = subtitles.find(subtitle => subtitle.start <= currentTime && subtitle.end >= currentTime);
           
-          // Update the subtitle text
           if (currentSubtitle) {
-            subtitlesDiv.textContent = currentSubtitle.text;
+            const caption = languageManager.getTranslation(currentSubtitle.key);
+            subtitlesDiv.textContent = caption;
           } else {
             subtitlesDiv.textContent = "";
           }
@@ -260,10 +277,8 @@ var screenManager = {
         // Check minimal screen size
         if (window.innerWidth < minimalScreenSize) {
             document.getElementById("smallScreenOverlay").style.display = "block";
-            document.getElementById("smallScreenOverlayPP").innerText = "Current width: " + window.innerWidth + "px";
         }else{
             document.getElementById("smallScreenOverlay").style.display = "none";
-            document.getElementById("smallScreenOverlayPP").innerText = "";
         }
     
         // Check ratio
@@ -376,6 +391,26 @@ var phoneManager = {
     resetTimer: function() {
         clearTimeout(idleTimer);
         idleTimer = setTimeout(phoneManager.lowerPhoneIfRaised, idleBeforeLoweringPhoneInMs);
+    },
+    signalClicked: function() {
+        const icon = document.getElementById("phone-button-signal");
+        
+        if (icon.innerHTML == "<i class=\"material-icons\">signal_cellular_alt</i>") {
+            icon.innerHTML = "<i class=\"material-icons\">signal_cellular_alt_2_bar</i>";
+            return;
+        }  
+        if (icon.innerHTML == "<i class=\"material-icons\">signal_cellular_alt_2_bar</i>") {
+            icon.innerHTML = "<i class=\"material-icons\">signal_cellular_alt_1_bar</i>";
+            return;
+        }              
+        if (icon.innerHTML == "<i class=\"material-icons\">signal_cellular_alt_1_bar</i>") {
+            icon.innerHTML = "<i class=\"material-icons\">signal_cellular_null</i>";
+            return;
+        }
+        if (icon.innerHTML == "<i class=\"material-icons\">signal_cellular_null</i>") {
+            icon.innerHTML = "<i class=\"material-icons\">signal_cellular_alt</i>";
+            return;
+        }
     }
 };
 
@@ -402,6 +437,16 @@ var roomManager = {
         
         clicks++;
         progressManager.checkHintSystem();
+
+        if (rooms[roomName].playNextSong){
+            soundManager.playNextSong();
+        }
+        if (!rooms[roomName].silent){
+            soundManager.play("enterroom");
+        }
+        if (rooms[roomName].preloadSaloon){
+            roomManager.preloadSaloon(rooms[roomName].preloadSaloon);
+        }
     },
     createAreas: function(areaDefinition){
         const canvas = document.getElementById("canvas");
@@ -568,6 +613,20 @@ var roomManager = {
                 areas[i].style.transition = "background-color 4s ease-in";
                 areas[i].style.backgroundColor = "transparent";
             }, 1500);
+        }
+    },
+    preloadSaloon: function(saloon){
+        for (const roomKey in rooms) {
+            if (rooms.hasOwnProperty(roomKey)) {
+                const room = rooms[roomKey];
+                const roomSaloon = roomKey.split("_")[1];
+                if (roomSaloon == saloon){
+                    console.log('preload',roomKey);
+                    // preload
+                    const img = new Image();
+                    img.src = "fotos/" + room.image;
+                }
+            }
         }
     }
 };
@@ -847,11 +906,8 @@ var batteryManager = {
         }
     },
     setBatteryValue: function(){
-        const userLanguage = "hr"; //navigator.language || navigator.userLanguage;
-        const selectedLanguage = translations[userLanguage] || translations.hr;
-        const title = selectedLanguage.title;
-        document.getElementById("tooltipBattery").textContent = selectedLanguage.tooltipBattery + battery + "%";
-        document.getElementById("tooltipBattery2").textContent = selectedLanguage.tooltipBattery + battery + "%";
+        document.getElementById("tooltipBattery").textContent = languageManager.getTranslation("tooltipBattery") + battery + "%";
+        document.getElementById("tooltipBattery2").textContent = document.getElementById("tooltipBattery").textContent;
         document.getElementById("phone-button-battery-value").textContent = battery + "%";
     },
     drawBattery: function(){
@@ -887,6 +943,8 @@ var progressManager = {
         progress.push(progressKey);
         clicks = 0;
         console.log('setProgress',progress,clicks);
+        // also, I must reload room, for areas to show if I'm in the room with just unlocked areas
+        roomManager.setRoom(currentRoom, true);
     },
     clearProgress: function(){
         progress = ["start"];
@@ -921,6 +979,7 @@ var animationManager = {
         setTimeout(function() {
             winAnimation.style.display = 'none';
         }, 2000);
+        soundManager.play("win");
     },
     animateLose: function(){
         var canvas = document.getElementById("canvas");
@@ -939,29 +998,131 @@ var animationManager = {
         setTimeout(function() {
             winAnimation.style.display = 'none';
         }, 1000);
+        soundManager.play("lose");
     }
 };
 
-var translationManager = {
-    setTranslations: function(){
-        const userLanguage = "hr"; //navigator.language || navigator.userLanguage;
-     
-        const selectedLanguage = translations[userLanguage] || translations.hr;
-    
-        document.getElementById("phone-title").textContent = selectedLanguage.phoneTitle;
-        document.getElementById("tooltipTitle").textContent = selectedLanguage.tooltipPhoneTitle;
-        document.getElementById("tooltipTogglePhone").textContent = selectedLanguage.togglePhone;
-        document.getElementById("tooltipAlarm").textContent = selectedLanguage.tooltipAlarm;
-        document.getElementById("tooltipWifi").textContent = selectedLanguage.tooltipWifi;
-        document.getElementById("tooltipSignal").textContent = selectedLanguage.tooltipSignal;
-        document.getElementById("tooltipBattery").textContent = selectedLanguage.tooltipBattery + battery + "%";
-        document.getElementById("tooltipBattery2").textContent = selectedLanguage.tooltipBattery + battery + "%";
-        document.getElementById("smallScreenOverlayP").textContent = selectedLanguage.smallScreenCaption + minimalScreenSize + "px.";
-        document.getElementById("invalidRatioOverlayP").textContent = selectedLanguage.invalidRatioCaption;
+var languageManager = {
+    currentLanguage: "hr",
+
+    setLanguage: function(languageCode){
+        languageManager.currentLanguage = languageCode;
+        languageManager.setTranslations();
+    },
+
+    getTranslation: function(key){
+        const languageRepository = translations[languageManager.currentLanguage];
+        return languageRepository[key];
+    },
+
+    setTranslations: async function(){
+        const languageRepository = translations[languageManager.currentLanguage];
+
+        document.title = languageRepository.hpCaption;
+
+        document.getElementById("hp_caption").textContent = languageRepository.hpCaption;
+        document.getElementById("hp_subcaption").textContent = "❧ " + languageRepository.hpSubcaption + " ☙";
+        document.getElementById("menuContinue").textContent = "⚍ " + languageRepository.menuContinue;
+        document.getElementById("menuNew").textContent = "⚍ " + languageRepository.menuNew;
+        document.getElementById("menuHow").textContent = "⚌ " + languageRepository.menuHow;
+        document.getElementById("menuAbout").textContent = "⚎ " + languageRepository.menuAbout;
+        document.getElementById("flag").innerHTML="<img id='flagLanguage' src='graphic/lang-" + languageManager.currentLanguage +".png' draggable='false'/>";
+        document.getElementById("howToPlayCaption").textContent = languageRepository.menuHow;
+        document.getElementById("aboutGameCaption").textContent = languageRepository.menuAbout + ":";
+        document.getElementById("popupAreYouSureCaption").innerHTML = languageRepository.popupAreYouSure;
+        document.getElementById("popupAreYouSureYes").textContent = languageRepository.popupAreYouSureYes;
+        document.getElementById("popupAreYouSureNo").textContent = languageRepository.popupAreYouSureNo;
+        document.getElementById("popupFullScreenCaption").innerHTML = languageRepository.popupFullScreenCaption;
+        document.getElementById("popupFullScreenYes").textContent = languageRepository.popupFullScreenYes;
+        document.getElementById("popupFullScreenNo").textContent = languageRepository.popupFullScreenNo;
+        document.getElementById("popupCloseGameCaption").innerHTML = languageRepository.popupCloseGameCaption;
+        document.getElementById("popupCloseGameOk").textContent = languageRepository.popupCloseGameOk;
+        //document.getElementById("tooltipAlarm").textContent = languageRepository.tooltipAlarm;
+        document.getElementById("phone-title").textContent = languageRepository.phoneTitle;
+        document.getElementById("tooltipTitle").textContent = languageRepository.tooltipPhoneTitle;
+        document.getElementById("tooltipTogglePhone").textContent = languageRepository.togglePhone;
+        document.getElementById("tooltipWifi").textContent = languageRepository.tooltipWifi;
+        document.getElementById("tooltipSignal").textContent = languageRepository.tooltipSignal;
+        document.getElementById("tooltipBattery").textContent = languageRepository.tooltipBattery + battery + "%";
+        document.getElementById("tooltipBattery2").textContent = languageRepository.tooltipBattery + battery + "%";
+        document.getElementById("tooltipSound").textContent = languageRepository.tooltipSound;
+        document.getElementById("tooltipSoundNext").textContent = languageRepository.tooltipSoundNext;
+        document.getElementById("smallScreenOverlayP").innerHTML = languageRepository.smallScreenCaption + minimalScreenSize + "px.<br/>" + languageRepository.smallScreenCaption2;
+        document.getElementById("invalidRatioOverlayP").innerHTML = languageRepository.invalidRatioCaption;
+        document.getElementById("popupFullScreenYes2").textContent = languageRepository.popupFullScreenYes2;
+        document.getElementById("aboutGameContent").innerHTML = languageRepository.aboutGameContent;
+
+        // load chat
+        (async () => {
+         
+            if (languageManager.currentLanguage === 'hr') {
+              const module = await import('./chats-hr.js');
+              chats = module.chats;
+            } else if (languageManager.currentLanguage === 'en') {
+              const module = await import('./chats-en.js');
+              chats = module.chats;
+            }
+            console.log(chats);
+          })();
+
     }
 };
 
+var soundManager = {
+    songs: [
+        { "name": "Mirror", "file": "song_1.mp3" },
+        { "name": "Old Forest", "file": "song_2.mp3" }
+      ],
+    currentSongIndex: 0,
+    audioMute: false,
+    player: document.getElementById("audio_player"),
 
+    play: function(audioId){
+        // audioId je Id elementa iz html
+        const sound = document.getElementById(audioId);
+        if(sound != null){
+            //sound.volume = 0.5;
+            sound.play()
+        }
+    },
+    startAudioPlayer: function(){
+        const currentSong = soundManager.songs[soundManager.currentSongIndex];
+        soundManager.player.src = "audios/" + currentSong.file;
+        document.getElementById("tooltipSoundNext").textContent = languageManager.getTranslation("tooltipSoundNext") + ": "+ currentSong.name;
+        soundManager.player.onended = function() {
+            soundManager.player.currentTime = 0;
+            soundManager.player.play();
+        };
+        if (soundManager.player.paused) {
+            soundManager.player.play();
+        }
+    },
+    playNextSong: function() {
+        if(soundManager.audioMute){return;}
+
+        const currentSong = soundManager.songs[soundManager.currentSongIndex];
+        soundManager.player.src = "audios/" + currentSong.file;
+        document.getElementById("tooltipSoundNext").textContent = languageManager.getTranslation("tooltipSoundNext") + ": "+ currentSong.name;
+        soundManager.player.play();
+        soundManager.currentSongIndex = (soundManager.currentSongIndex + 1) % soundManager.songs.length;
+    },
+    stopPlaying: function() {
+        soundManager.player.pause();
+        soundManager.player.currentTime = 0;
+        soundManager.currentSongIndex = 0;
+    },
+    toggleAudio: function() {
+        soundManager.audioMute = !soundManager.audioMute;
+        const icon = document.getElementById("phone-button-sound");
+        if (!soundManager.audioMute) {
+            soundManager.player.play();
+            icon.innerHTML = "<i class='material-icons'>volume_up</i>";
+        } else {
+            soundManager.player.pause();
+            icon.innerHTML = "<i class='material-icons'>volume_off</i>";
+        }
+    }
+}
 
 
 

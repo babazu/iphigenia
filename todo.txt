@@ -1,34 +1,26 @@
 
+function gameOver() => YOU DIED SCREEN
+    ide razgovor na mob
+    i onda popup
 
-
-
-   
+The End SCREEN
+    kao ending credits samo treba još nešto napisati, ili nešto, animacija neka, veselje
+    i vesela glazba
     
     
-RELOAD ROOM: Kad se area otvore zbog progressa, ne otvore se useru, tj on bi morao ponovo izići ući u tu sobu. Možda se do može riješiti deklarativno, da changea sobu u tu istu. (ali može biti bilo gdje, ne valja. Reload room treba napraviti)
-
-AUDIO I UPUTE ZA ČOPORA:
-    GLAZBA
-        ubaci zvukove
-        ubaci mjuzu
-        na mobitel ikona: volume_up i volume_off (koju ikonu za promjeniti glazbu??, zapravo kad odgasuješ da mijenja glazbu)
-
-    Definiraj točno za Čopora što treba.
-
 
 BUG: Snimanje/učitavanje => pucaju atob i btoa nekad kasnije, non latin char, ali to nema smisla kad su sve normali
     NISAM REPRODUCIRAO
 
 BUG: . za preskakanje dijaloga je imala neki issue pa je komentirana, ali možda radi
 
-preload po salonima, da nije sve odjednom, nego šestina po šestina
+BUG: favicon.ico zašto ne pokaže na produkciji 
 
-function gameOver() = > YOU DIED SCREEN
+SIGNAL: to je neki minigame: možda samo spikom se igra
+    serija da/ne pitanja, trigera se klikom na signal i točno diže bateriju za 1, krivo spušta za 1.
 
-TRANSLATE: Jezik se bira na prvom screenu. Subtitleovi i meni nisu prevedeni.
-    chat po jeziku
 
-SETTINGSI: Postavke signala u meniju ==> Jačina signala - to su možda settingsi (al što u njih?)
+
 
 Testirati Firefox
 	RUŽAN SCROLL NA MOBU
@@ -37,24 +29,20 @@ Testirati Firefox
 Razmisliti o skidanju modula da bi radilo kao vanilla jednostavnije
 Razmisliti o pakiranju u exe
 
-favicon.ico bolji 
-
 END GAME:
     Možda pobjednik može dobiti jedinstvenu šifru
     Možda TOP LISTA
 
 
-
-
+REAL PHOTOS
+REAL MUSIC
 
 
 NICE TO HAVE:
     animacija ide odmah a chat s delayem pa izostane napetost
     da se scalea po širini ako je visina manja od minimalne (sad bude crn ekran i poruka da F11)
-    WARNING: The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
-
-
-   
+    exe standalone (Electron)
+    Gašenje sounda na početnu?
 
 
 
@@ -67,3 +55,35 @@ ROK:
     1.8. sav tekst
     1.9. sve, kontaktirati Mavenu
     1.10. total predan projekt
+    
+    
+    
+    
+zadar da/ne
+
+Je li Zadar bio važna rimska kolonija?
+Odgovor: Da.
+Je li Zadar bio pod vlašću Bizanta tijekom srednjeg vijeka?
+Odgovor: Da.
+Je li Zadar bio pod mletačkom vlašću u 15. i 16. stoljeću?
+Odgovor: Da.
+Je li Zadar bio napadan tijekom osmanskih ratova?
+Odgovor: Da.
+Je li Zadar bio pod austrijskom vlašću u 19. stoljeću?
+Odgovor: Da.
+Je li Zadar bio bombardiran tijekom Drugog svjetskog rata?
+Odgovor: Da.
+Je li Zadar postao dio socijalističke Federativne Republike Jugoslavije nakon Drugog svjetskog rata?
+Odgovor: Da.
+Je li Zadar postao dio Republike Hrvatske nakon raspada Jugoslavije?
+Odgovor: Da.
+Je li Zadar danas popularna turistička destinacija?
+Odgovor: Da.
+Je li Zadar poznat po svojoj bogatoj kulturnoj baštini?
+Odgovor: Da.
+Je li Zadar bio glavni grad Hrvatske?
+Odgovor: Ne.
+Je li Zadar bio pod vlašću Osmanskog Carstva tijekom srednjeg vijeka?
+Odgovor: Ne.
+Je li Zadar bio potpuno uništen tijekom Drugog svjetskog rata?
+Odgovor: Ne.

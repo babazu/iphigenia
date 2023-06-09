@@ -79,9 +79,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   width: 420px;
-  height: 720px;
+  height: 712px;
   max-width: 420px;
-  max-height: 720px;
+  max-height: 712px;
   margin-top: 500px;
   bottom: -600px;
 }
@@ -405,7 +405,7 @@ body {
   font-weight: bold;
   text-align: left;
   padding-left: calc(10vw);
-  padding-top: calc(8vw);
+  padding-top: calc(5vw);
   color: #FFFFFF;
   }
 .hp_subcaption {
@@ -414,7 +414,7 @@ body {
   font-weight: normal;
   text-align: left;
   padding-left: calc(10vw);
-  padding-bottom: calc(4vw);
+  padding-bottom: calc(3vw);
   color: #CCCCCC;
 }
 .hp_menu {
@@ -524,7 +524,7 @@ body {
   }
 }
 #popupAreYouSure {
-  width:450px;
+  width:600px;
   max-height: 250px;
 }
 .popupContent {
@@ -562,7 +562,6 @@ body {
   color:#8ab4ac;
   font-size: 10px;
   padding-left: 10px;
-  padding-top: 45px;
 }
 .flash-animation {
   animation: flash 1s ease-in-out 3;
@@ -585,7 +584,7 @@ body {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
+  /*font-size: 24px;*/
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
@@ -596,4 +595,32 @@ body {
   -webkit-font-feature-settings: 'liga';
   font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+}
+.hp_menu img{
+  height: 5vw;
+  width: 5vw;
+  margin-right:20px;
+  transition: filter 0.3s ease;
+  filter: brightness(75%);
+}
+.hp_menu img:hover{
+  filter: brightness(100%);
+}
+.hp_arrow{
+  filter: brightness(100%)!important;
+}
+#menuLanguage{
+  position:absolute;
+  display: inline-block;
+  width: calc(9vw);
+  left: calc(68vw);
+  top: calc(40vw);
+}
+#flagLanguage{
+  position:absolute;
+  display: inline-block;
+  text-shadow: 0 0 2px #CCCCCC, 0 5px 5px #000000;
+  width: calc(9vw);
+  left: calc(68vw);
+  top: calc(40vw);
 }

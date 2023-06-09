@@ -1,9 +1,9 @@
 export { rooms };
 
 const rooms = {
-    "room_start": { image:"0_01.jpg",
+    "room_start": { image:"0_01.jpg", silent:true, playNextSong:false, preloadSaloon: 0,
         areas:[]},
-    "room_0_01": { image:"0_01.jpg",
+    "room_0_01": { image:"0_01.jpg", silent:true,
         areas:[
             {desc:"vrata",top:"70%",left:"46.5%",width:"10%",height:"25%",cursor:"up",actions:[{action:"setRoom",room:"room_0_02"}]},
             {desc:"banner",top:"31%",left:"61%",width:"5%",height:"26%",cursor:"hand",actions:[{action:"setChat",chat:"chat_0_DP"}]},
@@ -74,11 +74,11 @@ const rooms = {
         areas:[
             {desc:"natrag",top:"85%",left:"20%",width:"60%",height:"15%",cursor:"back",actions:[{action:"setRoom",room:"room_0_12"}]},
             {desc:"vrata",top:"26%",left:"46.5%",width:"8%",height:"29%",cursor:"right",actions:[{action:"setChat",chat:"chat_0_14"},{action:"setRoom",room:"room_0_14"}]}]},   
-    "room_0_14": { image:"0_14.jpg", 
+    "room_0_14": { image:"0_14.jpg", preloadSaloon: 1,
         areas:[
             {desc:"natrag",top:"85%",left:"20%",width:"60%",height:"15%",cursor:"back",actions:[{action:"setRoom",room:"room_0_13"}]},
             {desc:"vrata",top:"3%",left:"43%",width:"16%",height:"73%",cursor:"up",actions:[{action:"setRoom",room:"room_1_01"},{action:"setChatAndClearHistory",chat:"chat_1_01",clearChoices:true}]}]}, 
-    "room_1_01": { image:"1_01.jpg", 
+    "room_1_01": { image:"1_01.jpg", playNextSong: true,
         areas:[
             {desc:"slika",top:"6%",left:"78%",width:"22%",height:"66%",cursor:"right",actions:[{action:"setRoom",room:"room_1_s1"}]}, 
             {desc:"krevet",top:"48%",left:"0%",width:"35%",height:"36%",cursor:"left",actions:[{action:"setRoom",room:"room_1_k1"}]},
