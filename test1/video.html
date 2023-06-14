@@ -1,0 +1,72 @@
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+</head>
+<body>
+<style>
+  #videoDiv {
+    position: relative;
+  }
+
+  #subtitles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+	max-width: 460px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+	font-size: 24px;
+    text-align: center;
+  }
+</style>
+
+
+  
+  <div id="videoDiv">
+    <video id="videoTag" width="480" height="270" muted>
+      <source src="movie.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+	<div id="subtitles">dssd</div>
+  </div>
+  
+
+<script>
+function initialiseMovie(){
+	const subtitlesDiv = document.getElementById("subtitles");
+	const video = document.getElementById("videoTag");
+	const subtitles = [
+		{ start: 0, end: 3, key: "Dolazi nova era" },
+		{ start: 3, end: 6, key: "Midas oglasa" },
+		{ start: 6, end: 9, key: "Video oglasi" },
+		{ start: 9, end: 1200, key: "s titlovima" }
+	];
+	video.addEventListener("loadedmetadata", function() {
+	  video.play();
+	});
+	
+	video.addEventListener("timeupdate", function() {
+	  const currentTime = video.currentTime;
+	  const currentSubtitle = subtitles.find(subtitle => subtitle.start <= currentTime && subtitle.end >= currentTime);
+	  
+	  if (currentSubtitle) {
+		const caption = currentSubtitle.key;
+		subtitlesDiv.textContent = caption;
+	  } else {
+		subtitlesDiv.textContent = "";
+	  }
+	});
+}
+initialiseMovie();
+</script>
+
+
+
+
+</body>
+
+</html>
